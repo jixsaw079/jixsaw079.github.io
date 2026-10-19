@@ -1,13 +1,13 @@
 :root {
   color-scheme: dark;
-  --bg: #10110f;
-  --panel: #171915;
-  --panel-2: #1c1f19;
-  --line: #30342b;
-  --text: #f1f0e8;
-  --muted: #a0a396;
-  --dim: #74796b;
-  --accent: #d6ff62;
+  --bg: #130f1d;
+  --panel: #1b1627;
+  --panel-2: #241d33;
+  --line: #393047;
+  --text: #f2effa;
+  --muted: #b0a8c2;
+  --dim: #827993;
+  --accent: #8ea0ff;
   --mono: "DM Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
   --sans: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -174,3 +174,36 @@ footer { border-top: 1px solid var(--line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Purple and indigo portfolio refresh */
+.dossier { border-color: #484064; background: linear-gradient(145deg, rgba(142,160,255,.07), transparent 48%), var(--panel); }
+.dossier-avatar { background: #241d33; border-color: #484064; }
+.dossier-avatar::before, .dossier-avatar::after { border-color: rgba(142,160,255,.18); }
+.dossier-avatar i, .dossier-avatar b { background: rgba(142,160,255,.16); }
+.dossier-stamp, .pill, .activity-card.featured { border-color: #484064; }
+.about-squad { margin-top: 1.8rem; padding: 1.2rem; border: 1px solid var(--line); background: var(--panel); }
+.about-squad-label { font: .65rem var(--mono); letter-spacing: .08em; color: var(--accent); }
+.about-squad h3 { margin: .65rem 0 .4rem; font-size: 1.05rem; }
+.about-squad p { margin-bottom: .8rem; color: var(--muted); font-size: .86rem; }
+.social-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.4rem; }
+.social-links a { display: inline-flex; align-items: center; gap: 1rem; padding: .65rem .8rem; border: 1px solid var(--line); color: var(--text); font-size: .8rem; text-decoration: none; transition: border-color .18s ease, background .18s ease; }
+.social-links a span { color: var(--accent); }
+.social-links a:hover { border-color: var(--accent); background: rgba(142,160,255,.07); }
+.dossier-stamp { color: var(--accent); border-color: rgba(142,160,255,.5); }
+@media (max-width: 620px) { .social-links a { flex: 1 1 calc(50% - .65rem); justify-content: space-between; } }
+
+.squad-panel { margin-bottom: 2rem; }
+.squad-feature { display: grid; grid-template-columns: 155px 1fr; gap: 1.8rem; align-items: center; padding: 2.2rem 0; }
+.squad-monogram { display: grid; place-items: center; aspect-ratio: 1; background: #241d33; border: 1px solid #484064; color: var(--text); font: 2.8rem var(--mono); letter-spacing: -.1em; }
+.squad-monogram span { color: var(--accent); }
+.squad-feature .page-kicker { margin-bottom: .8rem; }
+.squad-feature h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); }
+.squad-feature h2 .muted { font-size: .65em; }
+.squad-lead { max-width: 650px; margin-bottom: 0; color: var(--muted); }
+.squad-values { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.squad-values article { padding: 1rem; background: rgba(142,160,255,.035); border: 1px solid var(--line); }
+.squad-values article > span { color: var(--accent); font: .62rem var(--mono); }
+.squad-values h3 { margin: 1rem 0 .5rem; font-size: 1rem; }
+.squad-values p { margin: 0; color: var(--muted); font-size: .82rem; }
+.squad-footnote { margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--dim); font: .62rem var(--mono); }
+@media (max-width: 620px) { .squad-feature { grid-template-columns: 1fr; } .squad-monogram { max-width: 120px; } .squad-values { grid-template-columns: 1fr; } }
