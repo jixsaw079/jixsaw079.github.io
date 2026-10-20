@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jixsaw079.github.io/sitemap.xml
