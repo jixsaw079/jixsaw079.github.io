@@ -280,3 +280,84 @@ footer { border-top: 1px solid var(--line); }
   .achievement-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .credential-image { height: 200px; max-height: 200px; }
 }
+
+
+/* JIXSAW FIELD NOTES refresh — unified palette, stronger hierarchy, responsive polish */
+:root {
+  --bg: #100d18;
+  --panel: #171321;
+  --panel-2: #211a30;
+  --line: #393047;
+  --text: #f5f2ff;
+  --muted: #bdb5d0;
+  --dim: #9389a8;
+  --accent: #a99bff;
+  --accent-rgb: 169,155,255;
+}
+body { background-color: var(--bg); }
+body::before {
+  opacity: .17;
+  background-image:
+    radial-gradient(ellipse at 78% 8%, rgba(var(--accent-rgb),.12), transparent 35%),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+}
+.site-header { background: rgba(16,13,24,.92); border-bottom-color: rgba(var(--accent-rgb),.16); }
+.mark { background: var(--accent); }
+.status-dot, .project-state i { background: var(--accent); box-shadow: 0 0 12px rgba(var(--accent-rgb),.42); }
+.dossier { border-color: #484064; background: linear-gradient(145deg, rgba(var(--accent-rgb),.09), transparent 52%), var(--panel); box-shadow: 8px 8px 0 #08060d; }
+.dossier-avatar { background: #211a30; border-color: #484064; }
+.dossier-avatar::before, .dossier-avatar::after { border-color: rgba(var(--accent-rgb),.18); }
+.dossier-avatar i, .dossier-avatar b { background: rgba(var(--accent-rgb),.16); }
+.dossier-stamp, .pill, .activity-card.featured { border-color: #484064; }
+.button-primary:hover { background: #c9c0ff; }
+.activity-card:hover { border-color: var(--accent); }
+.activity-card.featured { background: linear-gradient(145deg, rgba(var(--accent-rgb),.09), transparent 62%), var(--panel); }
+.tag-list span { color: var(--muted); }
+.section { scroll-margin-top: 6rem; }
+.section-label { text-transform: uppercase; }
+.section-heading { align-items: end; }
+.project-row { transition: border-color .2s ease; }
+.project-row:hover { border-top-color: rgba(var(--accent-rgb),.6); }
+.project-symbol { transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+.project-symbol:hover { color: var(--text); border-color: var(--accent); transform: translate(2px,-2px); }
+.archive-panel, .squad-member, .achievement-card { border-color: #393047; }
+.archive-icon { border-color: #484064; }
+.member-photo, .member-photo-placeholder { border-color: #484064; }
+.achievement-art-icon { border-color: #7165a3; }
+a, button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible { outline-color: var(--accent); outline-offset: 4px; }
+img { max-width: 100%; }
+@media (max-width: 800px) {
+  .hero-grid { gap: 2.5rem; }
+  .section { padding-block: 4rem; }
+}
+@media (max-width: 620px) {
+  .wrap { width: min(100% - 28px, 1120px); }
+  .header-inner { gap: .65rem; }
+  .wordmark { white-space: normal; letter-spacing: .06em; font-size: .78rem; }
+  nav { gap: .55rem .9rem; }
+  nav a { font-size: .76rem; }
+  .hero-topline { font-size: .58rem; gap: .45rem; }
+  .hero-footer { flex-wrap: wrap; font-size: .58rem; }
+  .hero-footer span:last-child { margin-left: auto; text-align: right; }
+  .section-label { flex-wrap: wrap; font-size: .62rem; }
+  .section-note { margin-left: 0; width: 100%; }
+  .section-heading { display: block; }
+  .section-heading p { margin-top: .7rem; }
+  .project-row { grid-template-columns: 36px minmax(0,1fr) 28px; }
+  .project-number { overflow-wrap: anywhere; }
+  .archive-top { font-size: .58rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy, .dossier { animation: dossier-enter .65s cubic-bezier(.2,.7,.2,1) both; }
+  .dossier { animation-delay: .08s; }
+  @keyframes dossier-enter {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
