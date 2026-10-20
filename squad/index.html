@@ -8,8 +8,15 @@
 <meta name="description" content="Meet Deadweight Squad, a cybersecurity and CTF team founded and led by Shadman Ibtesham, known online as Jixsaw.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<style>
+.squad-hero{display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,72px)}
+.squad-hero-copy{flex:1;min-width:0}
+.squad-hero-logo{flex:0 1 310px;display:flex;justify-content:center;align-items:center;min-width:0}
+.squad-hero-logo img{display:block;width:100%;max-width:310px;max-height:310px;object-fit:contain}
+@media(max-width:640px){.squad-hero{gap:12px;align-items:center}.squad-hero-logo{flex-basis:36%;}.squad-hero-logo img{max-height:170px}.squad-hero-copy h1{font-size:clamp(2.2rem,10vw,4rem)}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -18,16 +25,16 @@
 <nav aria-label="Main navigation"><a href="/#profile">About</a><a href="/#operations">Experience</a><a href="/#builds">Projects</a><a href="/achievements/">Achievements</a><a href="/squad/" aria-current="page">Deadweight Squad</a><a href="/#contact">Connect</a></nav>
 </div></header>
 <main id="main" class="wrap">
-<section class="page-intro">
+<section class="page-intro squad-hero">
+<div class="squad-hero-copy">
 <p class="page-kicker">TEAM PROFILE / DWS-001</p>
 <h1>Deadweight<br><span class="accent">Squad.</span></h1>
 <p>A team built on curiosity, persistence, and solving hard problems together. Deadweight Squad brings a collaborative mindset to CTFs and hands-on cybersecurity learning.</p>
+</div>
+<div class="squad-hero-logo"><img src="grok_1792480010880.jpg" alt="Deadweight Squad team logo"></div>
 </section>
 <section class="archive-panel squad-panel">
 <div class="archive-top"><span>TEAM DOSSIER / DEADWEIGHT SQUAD</span><span>FOUNDED 2026</span></div>
-<div style="display:flex;justify-content:center;align-items:center;padding:28px 20px 34px;">
-<img src="grok_1792480010880.jpg" alt="Deadweight Squad team logo" style="display:block;width:min(100%,260px);max-height:260px;object-fit:contain;border-radius:12px;">
-</div>
 <div class="squad-feature">
 <div class="squad-founder-photo"><img src="../IMG-20260816-WA0145(1).jpg" alt="Jixsaw, founder and leader of Deadweight Squad"></div>
 <div><p class="page-kicker">FOUNDER &amp; TEAM LEADER</p><h2>Shadman Ibtesham <span class="muted">(Jixsaw)</span></h2><p class="squad-lead">Founded and led by Shadman Ibtesham, Deadweight Squad is a space for CTF competitors and cybersecurity learners to practice together, share knowledge, and grow through challenges.</p></div>
