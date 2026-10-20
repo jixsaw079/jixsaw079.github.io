@@ -361,3 +361,41 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Page-specific styles moved here so the Content Security Policy can block inline CSS. */
+
+/* Extracted page styles: squad/index.html */
+.squad-hero{display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,72px)}
+.squad-hero-copy{flex:1;min-width:0}
+.squad-hero-logo{flex:0 1 310px;display:flex;justify-content:center;align-items:center;min-width:0}
+.squad-hero-logo img{display:block;width:100%;max-width:310px;max-height:310px;object-fit:contain}
+.member-photo{display:grid;place-items:center;width:100%;aspect-ratio:4/3;margin-bottom:1.2rem;overflow:hidden;border:1px solid #484064;background:#171321}
+.member-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+
+@media(max-width:640px){.squad-hero{gap:12px;align-items:center}.squad-hero-logo{flex-basis:36%;}.squad-hero-logo img{max-height:170px}.squad-hero-copy h1{font-size:clamp(2.2rem,10vw,4rem)}}
+
+
+/* Extracted page styles: writeups/index.html */
+.notes-intro{max-width:760px}
+.notes-intro h1{max-width:680px}
+.notes-manifesto{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0 2.5rem}
+.notes-manifesto article{padding:1.2rem;border:1px solid var(--line);background:linear-gradient(145deg,rgba(var(--accent-rgb),.06),transparent 65%),var(--panel)}
+.notes-manifesto span,.note-state,.note-index{font: .65rem var(--mono);letter-spacing:.08em;color:var(--accent)}
+.notes-manifesto h2{font-size:1.25rem;margin:.8rem 0 .45rem}
+.notes-manifesto p{font-size:.85rem;color:var(--muted);margin:0}
+.notes-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.note-card{min-width:0;display:flex;flex-direction:column;padding:1.35rem;border:1px solid var(--line);background:var(--panel);min-height:230px}
+.note-card-top{display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.note-card h2{font-size:1.45rem;margin:1.7rem 0 .6rem}
+.note-card p{color:var(--muted);font-size:.88rem}
+.note-card .note-state{margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);color:var(--dim)}
+.note-card .note-state strong{color:var(--accent);font-weight:500}
+.notes-policy{margin-top:2rem;padding:1.3rem;border-left:2px solid var(--accent);background:rgba(var(--accent-rgb),.05)}
+.notes-policy h2{font-size:1.25rem}
+.notes-policy p{margin:0;color:var(--muted);font-size:.88rem}
+@media(max-width:620px){.notes-manifesto,.notes-board{grid-template-columns:1fr}.note-card{min-height:190px}}
+
+
+/* Extracted page styles: 404.html */
+.error-panel{min-height:65vh;display:flex;flex-direction:column;justify-content:center;max-width:760px}.error-code{font: .75rem var(--mono);letter-spacing:.12em;color:var(--accent)}.error-panel h1{font-size:clamp(4rem,13vw,8rem);margin:.8rem 0}.error-panel p{max-width:560px;color:var(--muted)}.error-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
