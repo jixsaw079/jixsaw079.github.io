@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f0c16">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; media-src 'none'; worker-src 'none'; connect-src 'none'; manifest-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Bank Management System — Project Case Study | Jixsaw</title>
+<meta name="description" content="Development log for a terminal-based C Bank Management System, documenting its current scope and planned reliability improvements.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bank Management System — Jixsaw">
+<meta property="og:description" content="A C project being improved through file persistence, validation, and incremental testing.">
+<meta property="og:url" content="https://jixsaw079.github.io/projects/bank-management-system/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/" aria-label="Jixsaw — home"><span class="mark">JX</span> JIXSAW <span class="wordmark-tail">SHADMAN IBTESHAM / CYBERSECURITY</span></a>
+    <nav aria-label="Main navigation">
+      <a href="/#profile">About</a>
+      <a href="/#operations">Activity</a>
+      <a href="/#builds" aria-current="page">Projects</a>
+      <a href="/writeups/">Field Notes</a>
+      <a href="/achievements/">Achievements</a>
+      <a href="/squad/">Deadweight Squad <span class="nav-arrow">↗</span></a>
+      <a href="/#contact">Connect</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <section class="page-intro">
+    <p class="page-kicker">PROJECT LOG / P—01</p>
+    <h1>Bank Management<br><span class="accent">System.</span></h1>
+    <p>A terminal-based C program being developed from a course project into a more reliable application. This page records the current direction and planned changes—not a claim that every improvement is finished.</p>
+    <div class="tag-list compact"><span>C</span><span>File I/O</span><span>Input validation</span><span>Incremental refactor</span></div>
+  </section>
+  <section class="section case-study-section">
+    <div class="section-label"><span>01</span> / CURRENT SCOPE</div>
+    <div class="case-study-grid">
+      <article class="case-study-panel">
+        <span class="case-label">BASELINE</span>
+        <h2>What the prototype is for</h2>
+        <p>The project is a menu-driven banking simulation intended to practise C programming and function-based program structure.</p>
+        <ul>
+          <li>Deposit and cash-out operations</li>
+          <li>Account-to-account transfer</li>
+          <li>Loan-related operation</li>
+          <li>Terminal-based interaction</li>
+        </ul>
+        <p class="case-caveat">This is a learning project, not real banking software. The source code is not linked here yet, so implementation details should be verified against the published repository before being treated as a tested feature list.</p>
+      </article>
+      <article class="case-study-panel">
+        <span class="case-label">NEXT ITERATION</span>
+        <h2>Reliability before features</h2>
+        <ol>
+          <li><strong>Persistent storage</strong><p>Save and reload records so data survives program restarts.</p></li>
+          <li><strong>Input validation</strong><p>Reject invalid numbers, malformed input, and unsafe transaction amounts.</p></li>
+          <li><strong>Transaction checks</strong><p>Prevent invalid transfers and cash-outs, and verify balances before changing them.</p></li>
+          <li><strong>Test cases</strong><p>Check normal operations, invalid inputs, missing data files, and restart behavior.</p></li>
+        </ol>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-label"><span>02</span> / ENGINEERING NOTES</div>
+    <h2>How I’ll document the changes</h2>
+    <div class="case-study-steps">
+      <article><span>01</span><h3>Record the baseline</h3><p>Describe existing behavior before changing the code, so regressions are easier to spot.</p></article>
+      <article><span>02</span><h3>Change one thing at a time</h3><p>Keep each improvement small enough to explain during a code review or viva.</p></article>
+      <article><span>03</span><h3>Verify the result</h3><p>Document what was tested and what remains incomplete. No test result is claimed until it has been run.</p></article>
+    </div>
+    <p class="case-caveat">Status: in development. A source-code link and verified test results will be added once the project is published in a repository and those checks have been performed.</p>
+  </section>
+  <a class="back-link" href="/#builds">← BACK TO PROJECTS</a>
+</main>
+<footer><div class="wrap footer-inner"><a class="wordmark" href="/"><span class="mark">JX</span> JIXSAW</a><span>PROJECT LOG · 2026</span><a href="#main">BACK TO TOP ↑</a></div></footer>
+</body>
+</html>
