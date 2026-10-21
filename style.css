@@ -1446,9 +1446,17 @@ footer {
     align-items: flex-start;
   }
 
+  .social-links {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0.45rem;
+  }
+
   .social-links a {
-    flex: 1 1 calc(50% - 0.6rem);
-    justify-content: space-between;
+    flex: 0 0 2.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    justify-content: center;
   }
 
   .footer-inner {
