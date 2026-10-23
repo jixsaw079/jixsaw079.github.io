@@ -791,6 +791,8 @@ footer {
 }
 
 .squad-member {
+  width: 100%;
+  max-width: 320px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1176,11 +1178,6 @@ footer {
   border-radius: 50%;
   background: var(--panel-2);
   box-shadow: 0 0 0 5px var(--panel);
-}
-
-.collaborator-grid .squad-member {
-  max-width: 320px;
-  width: 100%;
 }
 
 @media (max-width: 640px) {
