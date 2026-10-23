@@ -2003,12 +2003,12 @@ a:focus-visible {
 }
 
 
-/* ---------- Terminal interface: whoami + persistent status ticker ---------- */
+/* ---------- Terminal interface: shared whoami panel + status ticker ---------- */
 main.wrap::before {
   content: "jixsaw@portfolio:~$ whoami\\A Shadman Ibtesham — CSE student & cybersecurity learner\\A jixsaw@portfolio:~$";
   display: block;
   white-space: pre-line;
-  margin: 1.1rem 0 0.5rem;
+  margin: 1.1rem 0 0.75rem;
   padding: 0.85rem 1rem;
   border: 1px solid var(--line-strong);
   border-left: 3px solid var(--accent);
@@ -2019,12 +2019,14 @@ main.wrap::before {
   box-shadow: 4px 4px 0 rgba(142, 160, 255, 0.08);
 }
 
-.site-header::after {
+.site-header::after,
+.error-panel::after {
   content: "● SYSTEM ONLINE  //  BEEP BEEP  //  JIXSAW PORTFOLIO  //  CTF • DIGITAL FORENSICS • NETWORKING  //  SYSTEM ONLINE  //  BEEP BEEP  //  ";
   display: block;
+  box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  padding: 0.42rem 1rem;
+  padding: 0.48rem 1rem;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--panel);
@@ -2105,5 +2107,13 @@ select:focus-visible {
   main.wrap::before {
     font-size: 0.65rem;
     overflow-wrap: anywhere;
+  }
+
+  .site-header::after,
+  .error-panel::after {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    font-size: 0.57rem;
+    letter-spacing: 0.045em;
   }
 }
