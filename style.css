@@ -1659,3 +1659,15 @@ a.project-symbol:hover { transform: translateY(-2px); }
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ---------- Security hardening: no inline style attributes ---------- */
+.mt-section { margin-top: 1.6rem; }
+.mt-section-small { margin-top: 1.4rem; }
+.inline-text { color: var(--text); }
+.dim-text { color: var(--dim); }
+.status-note {
+  margin-top: 1.4rem;
+  color: var(--dim);
+  font-size: 0.85rem;
+}
