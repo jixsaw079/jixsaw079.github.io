@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f0c16">
+<meta name="theme-color" content="#0b0912">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; media-src 'none'; worker-src 'none'; connect-src 'none'; manifest-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Field Notes — Jixsaw</title>
+<title>jixsaw@notes:~$ — Field Notes</title>
 <meta name="description" content="CTF notes and cybersecurity learning logs from Jixsaw. Focused on reproducible reasoning and responsible documentation.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jixsaw — Cybersecurity Field Notes">
@@ -16,28 +16,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=20261023-terminal-v6">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="wordmark" href="/" aria-label="Jixsaw — home"><span class="mark">JX</span> JIXSAW <span class="wordmark-tail">SHADMAN IBTESHAM / CYBERSECURITY</span></a>
+    <a class="wordmark" href="/" aria-label="Jixsaw home">
+      <span class="mark">JX</span>
+      <span class="prompt-user">jixsaw</span><span class="prompt-host">@notes</span><span class="wordmark-tail">:~$</span>
+    </a>
     <nav aria-label="Main navigation">
-      <a href="/#profile">About</a>
-      <a href="/#operations">Activity</a>
-      <a href="/#builds">Projects</a>
-      <a href="/writeups/" aria-current="page">Field Notes</a>
-      <a href="/achievements/">Achievements</a>
-      <a href="/squad/">Deadweight Squad <span class="nav-arrow">↗</span></a>
-      <a href="/#contact">Connect</a>
+      <a href="/#profile">about</a>
+      <a href="/#operations">activity</a>
+      <a href="/#builds">projects</a>
+      <a href="/writeups/" aria-current="page">notes</a>
+      <a href="/achievements/">certs</a>
+      <a href="/squad/">squad <span class="nav-arrow">↗</span></a>
+      <a href="/#contact">contact</a>
     </nav>
   </div>
 </header>
 
 <main id="main" class="wrap">
   <section class="page-intro notes-intro">
-    <p class="page-kicker">RESEARCH LOG / JX-FN</p>
+    <p class="page-kicker">$ cat research_log.md</p>
     <h1>Follow the evidence.<br><span class="accent">Explain the why.</span></h1>
     <p>CTF write-ups and practical notes belong here only when I can explain the path clearly — not just paste a flag or repeat a solver. This archive grows alongside the practice.</p>
   </section>
@@ -57,64 +60,45 @@
 
   <section class="section" aria-labelledby="archive-title">
     <div class="section-label">
-      <span>01</span> / TOPIC INDEX
-      <span class="section-note">PRACTICE AREAS</span>
+      <span class="cmd">$ ls</span> <span class="path">topics/</span>
     </div>
     <div class="section-heading">
       <h2 id="archive-title">The workbench</h2>
-      <p>Topics I’m developing through CTFs and structured practice. No article is marked published until its reasoning is ready to reproduce.</p>
+      <p>Topics I’m actively developing through CTFs and structured practice.</p>
     </div>
     <div class="notes-board">
       <article class="note-card">
-        <div class="note-card-top">
-          <span class="note-index">FN—01</span>
-          <span class="pill">FORENSICS</span>
-        </div>
+        <div class="note-card-top"><span class="note-index">FN—01</span><span class="pill">FORENSICS</span></div>
         <h2>Artifacts & traces</h2>
         <p>File metadata, recovered artifacts, timelines, and the small clues that turn into a defensible explanation.</p>
         <div class="note-state">ARCHIVE STATUS · <strong>Notes in progress</strong></div>
       </article>
       <article class="note-card">
-        <div class="note-card-top">
-          <span class="note-index">FN—02</span>
-          <span class="pill">NETWORKING</span>
-        </div>
+        <div class="note-card-top"><span class="note-index">FN—02</span><span class="pill">NETWORKING</span></div>
         <h2>Read the traffic</h2>
         <p>Packet-level observations, protocol behavior, and supporting conclusions with evidence from captures.</p>
         <div class="note-state">ARCHIVE STATUS · <strong>Notes in progress</strong></div>
       </article>
       <article class="note-card">
-        <div class="note-card-top">
-          <span class="note-index">FN—03</span>
-          <span class="pill">OSINT</span>
-        </div>
+        <div class="note-card-top"><span class="note-index">FN—03</span><span class="pill">OSINT</span></div>
         <h2>Connect the clues</h2>
         <p>Source evaluation, verification, and documenting an investigation without overstating what a clue means.</p>
         <div class="note-state">ARCHIVE STATUS · <strong>Practice area</strong></div>
       </article>
       <article class="note-card">
-        <div class="note-card-top">
-          <span class="note-index">FN—04</span>
-          <span class="pill">CRYPTOGRAPHY</span>
-        </div>
+        <div class="note-card-top"><span class="note-index">FN—04</span><span class="pill">CRYPTOGRAPHY</span></div>
         <h2>Understand the math</h2>
         <p>Challenge notes focused on assumptions, mathematical reasoning, and explaining why a method works.</p>
         <div class="note-state">ARCHIVE STATUS · <strong>Practice area</strong></div>
       </article>
       <article class="note-card">
-        <div class="note-card-top">
-          <span class="note-index">FN—05</span>
-          <span class="pill">WEB SECURITY</span>
-        </div>
+        <div class="note-card-top"><span class="note-index">FN—05</span><span class="pill">WEB SECURITY</span></div>
         <h2>Follow the request</h2>
         <p>Request/response behavior, input handling, and safe lab-based analysis of web challenge mechanics.</p>
         <div class="note-state">ARCHIVE STATUS · <strong>Practice area</strong></div>
       </article>
       <article class="note-card">
-        <div class="note-card-top">
-          <span class="note-index">FN—06</span>
-          <span class="pill">STEGANOGRAPHY</span>
-        </div>
+        <div class="note-card-top"><span class="note-index">FN—06</span><span class="pill">STEGANOGRAPHY</span></div>
         <h2>Look beneath the surface</h2>
         <p>File inspection and hypothesis-driven checks for hidden data, with enough detail to reproduce the process.</p>
         <div class="note-state">ARCHIVE STATUS · <strong>Practice area</strong></div>
@@ -123,18 +107,18 @@
 
     <div class="notes-policy">
       <h2>Publication standard</h2>
-      <p>No fabricated flags. No copied solution presented as original work. No instructions that target systems without authorization. When a write-up is ready, this page will link to the full note and identify the challenge context. Until then, these cards are a topic index—not claims of published research.</p>
+      <p>No fabricated flags. No copied solution presented as original work. No instructions that target systems without authorization. When a write-up is ready, this page will link to the full note and identify the challenge context.</p>
     </div>
   </section>
 
-  <a class="back-link" href="/">← BACK TO PORTFOLIO</a>
+  <a class="back-link" href="/">$ cd ~</a>
 </main>
 
 <footer>
   <div class="wrap footer-inner">
-    <a class="wordmark" href="/"><span class="mark">JX</span> JIXSAW</a>
-    <span>FIELD NOTES · 2026</span>
-    <a href="#main">BACK TO TOP ↑</a>
+    <a class="wordmark" href="/"><span class="mark">JX</span> jixsaw@notes</a>
+    <span>exit 0 · 2026</span>
+    <a href="#main">cd ~</a>
   </div>
 </footer>
 </body>
