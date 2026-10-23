@@ -3,7 +3,7 @@
   const path = window.location.pathname;
   const pageName = path.includes("/achievements") ? "achievements" : path.includes("/writeups") ? "writeups" : path.includes("/projects/bank-management-system") ? "project" : path.includes("/squad") ? "squad" : path.endsWith("404.html") ? "404" : "home";
   const commands = {
-    help: "Available commands:\n  help             show this help\n  whoami           show profile identity\n  ls               list portfolio sections\n  about            jump to the about section\n  skills           jump to skills and current learning\n  activity         jump to field activity\n  projects         browse projects\n  writeups         open CTF field notes\n  achievements     open certificates and badges\n  squad            open Deadweight Squad\n  contact          jump to contact details\n  home             return to the homepage\n  clear            clear terminal output\n  date             show this session's date\n  theme            show the active color theme",
+    help: "Available commands:\n  help             show this help\n  whoami           show profile identity\n  ls               list portfolio sections\n  about            jump to the about section\n  skills           jump to skills and current learning\n  activity         jump to field activity\n  projects         jump to projects\n  project          open the Bank Management System case study\n  writeups         open CTF field notes\n  achievements     open certificates and badges\n  squad            open Deadweight Squad\n  contact          jump to contact details\n  home             return to the homepage\n  clear            clear terminal output\n  date             show this session's date\n  theme            show the active color theme",
     whoami: "Shadman Ibtesham (Jixsaw)\nCSE student at East West University\nCybersecurity learner | CTFs | Digital forensics | Networking\nCurrently learning Python.",
     ls: "about/   skills/   activity/   projects/   writeups/   achievements/   squad/   contact/",
     theme: "Active palette: Jixsaw original purple / indigo / blue.\nTerminal mode: enabled.",
@@ -65,8 +65,10 @@
       contact: { id: "contact", text: "Opening contact details..." }
     };
     if (sections[cmd]) {
-      if (pageName !== "home") print("Use home first, then run " + cmd + ".", "terminal-hint");
-      else if (jumpTo(sections[cmd].id)) print(sections[cmd].text, "result");
+      if (pageName !== "home") {
+        print("Opening homepage section: " + cmd + " ...", "result");
+        goTo("/#" + sections[cmd].id);
+      } else if (jumpTo(sections[cmd].id)) print(sections[cmd].text, "result");
       else print("Section not found: " + sections[cmd].id, "terminal-error");
       return;
     }
