@@ -1308,3 +1308,351 @@ footer {
 @keyframes jixsaw-terminal-cursor {
   to { visibility: hidden; }
 }
+
+
+/* =========================================================
+   UI polish pass — clearer hierarchy, smoother navigation,
+   stronger focus states, and small-screen refinements
+   ========================================================= */
+:root {
+  --panel-glow: 0 18px 55px rgba(0, 0, 0, 0.24);
+  --focus-ring: 0 0 0 3px rgba(142, 160, 255, 0.24);
+}
+
+::selection {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+html { scroll-padding-top: calc(var(--header-h) + 1rem); }
+
+body {
+  min-width: 320px;
+  overflow-wrap: break-word;
+}
+
+section[id], article[id] {
+  scroll-margin-top: calc(var(--header-h) + 1.2rem);
+}
+
+a, button, .button, .social-links a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible, .button:focus-visible, .social-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  box-shadow: var(--focus-ring);
+}
+
+.site-header {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.header-inner { min-width: 0; }
+
+nav {
+  min-width: 0;
+  scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar { display: none; }
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  white-space: nowrap;
+  padding: 0.18rem 0;
+}
+
+nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.42rem;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(1.8rem, 4vw, 3rem);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(60vw, 620px);
+  height: 360px;
+  left: -9rem;
+  top: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse, rgba(142, 160, 255, 0.09), transparent 68%);
+}
+
+.hero-topline {
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.status-dot { flex: 0 0 7px; }
+
+.hero-description,
+.section-heading p,
+.page-intro > p:not(.page-kicker) {
+  text-wrap: pretty;
+}
+
+.hero-about {
+  box-shadow: var(--panel-glow);
+}
+
+.term-window {
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.term-window:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.28);
+}
+
+.term-titlebar { min-height: 38px; }
+
+.term-body .out {
+  overflow-wrap: anywhere;
+}
+
+.section-label {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.section-heading { max-width: 720px; }
+
+.activity-card,
+.skill-card,
+.note-card,
+.squad-member,
+.achievement-card,
+.badge-real,
+.notes-manifesto article {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.activity-card:hover,
+.skill-card:hover,
+.note-card:hover,
+.squad-member:hover,
+.achievement-card:hover,
+.badge-real:hover,
+.notes-manifesto article:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.activity-card,
+.skill-card,
+.note-card,
+.squad-member,
+.achievement-card,
+.badge-real,
+.notes-manifesto article {
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.skill-card, .activity-card, .note-card { min-width: 0; }
+
+.card-meta, .achievement-meta {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pill { white-space: nowrap; }
+
+.project-row { align-items: start; }
+
+.project-main { min-width: 0; }
+
+.project-title-link { text-underline-offset: 0.22em; }
+
+.project-symbol {
+  align-self: start;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+a.project-symbol:hover { transform: translateY(-2px); }
+
+.roadmap li { align-items: start; }
+
+.roadmap li > b {
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.social-links a { flex: 0 0 auto; }
+
+.credential-preview {
+  display: block;
+  overflow: hidden;
+}
+
+.credential-image { transition: transform 220ms ease; }
+
+.credential-preview:hover .credential-image { transform: scale(1.025); }
+
+.squad-member { justify-self: stretch; }
+
+.squad-members { align-items: stretch; }
+
+.squad-member { max-width: none; }
+
+.member-photo img { transition: transform 220ms ease; }
+
+.squad-member:hover .member-photo img { transform: scale(1.025); }
+
+.badge-real { width: min(100%, 220px); }
+
+.moment-placeholder { border-color: var(--line-strong); }
+
+.error-panel { min-height: min(78vh, 760px); }
+
+.back-link {
+  padding: 0.35rem 0;
+  text-underline-offset: 0.35em;
+}
+
+.back-link:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .header-inner {
+    flex-wrap: wrap;
+    padding-block: 0.65rem;
+  }
+
+  .site-header { height: auto; }
+
+  .hero-grid { gap: 1.6rem; }
+
+  .hero::before {
+    width: 90vw;
+    left: -3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+  }
+
+  .wordmark { align-self: flex-start; }
+
+  nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    gap: 0.15rem 1rem;
+    padding: 0.1rem 0 0.3rem;
+    scrollbar-width: none;
+  }
+
+  nav a {
+    flex: 0 0 auto;
+    min-height: 34px;
+    font-size: 0.76rem;
+  }
+
+  nav a[aria-current="page"] { text-underline-offset: 0.3rem; }
+
+  .hero-topline {
+    font-size: 0.68rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-identity { align-items: center; }
+
+  .hero-avatar {
+    flex-basis: 64px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-description { font-size: 0.9rem; }
+
+  .hero-actions { gap: 0.55rem; }
+
+  .button {
+    max-width: 100%;
+    font-size: 0.76rem;
+    padding-inline: 0.8rem;
+  }
+
+  .term-body { padding: 0.85rem; }
+
+  .section-label { font-size: 0.72rem; }
+
+  .project-row {
+    grid-template-columns: 1fr 28px;
+    gap: 0.65rem;
+  }
+
+  .project-number {
+    grid-column: 1 / -1;
+    padding-top: 0;
+  }
+
+  .project-main { grid-column: 1; }
+  .project-symbol { grid-column: 2; grid-row: 2; }
+
+  .archive-panel { padding: 0.85rem; }
+
+  .archive-top {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .squad-feature { gap: 0.9rem; }
+
+  .squad-founder-photo { max-width: 180px; }
+
+  .squad-values { grid-template-columns: 1fr; }
+
+  .badge-real { max-width: none; }
+
+  .achievement-grid,
+  .notes-board,
+  .activity-grid,
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-identity { align-items: flex-start; gap: 0.65rem; }
+
+  .hero-avatar {
+    flex-basis: 54px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .hero-identity h1 { font-size: clamp(1.7rem, 8.5vw, 2.15rem); }
+
+  .hero-actions .button { width: 100%; justify-content: center; }
+
+  .term-titlebar { gap: 0.35rem; padding-inline: 0.6rem; }
+
+  .term-title { overflow-wrap: anywhere; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
