@@ -1290,7 +1290,7 @@ footer {
 /* ---------- Blinking cursor for terminal-style text only ---------- */
 .term-body .prompt::after,
 .shell-prompt::after,
-.section-label .cmd::after,
+.section-label::after,
 .page-intro > .page-kicker::after,
 .error-code::after {
   content: "";
