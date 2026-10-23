@@ -3,37 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f0c16">
+<meta name="theme-color" content="#0b0912">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; media-src 'none'; worker-src 'none'; connect-src 'none'; manifest-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="index, follow">
-<title>Jixsaw — Cybersecurity Field Notes & Portfolio</title>
+<title>jixsaw@portfolio:~$ — Cybersecurity Field Notes</title>
 <meta name="description" content="Cybersecurity learning log of Shadman Ibtesham (Jixsaw): CTF practice, digital forensics, networking, projects, and Deadweight Squad.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jixsaw — Cybersecurity Field Notes">
 <meta property="og:description" content="CTF practice, practical projects, and a public learning journey in cybersecurity.">
 <meta property="og:url" content="https://jixsaw079.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230f0c16'/%3E%3Cpath d='M24 25h52M24 50h34M24 75h52' stroke='%238ea0ff' stroke-width='7'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230b0912'/%3E%3Cpath d='M24 25h52M24 50h34M24 75h52' stroke='%238ea0ff' stroke-width='7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261023-terminal-v6">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="wordmark" href="/" aria-label="Jixsaw — home"><span class="mark">JX</span> JIXSAW <span class="wordmark-tail">SHADMAN IBTESHAM / CYBERSECURITY</span></a>
+    <a class="wordmark" href="/" aria-label="Jixsaw home">
+      <span class="mark">JX</span>
+      <span class="prompt-user">jixsaw</span><span class="prompt-host">@portfolio</span><span class="wordmark-tail">:~$</span>
+    </a>
     <nav aria-label="Main navigation">
-      <a href="#profile">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#operations">Activity</a>
-      <a href="#builds">Projects</a>
-      <a href="writeups/">Field Notes</a>
-      <a href="achievements/">Achievements</a>
-      <a href="squad/">Deadweight Squad <span class="nav-arrow">↗</span></a>
-      <a href="#contact">Connect</a>
+      <a href="#profile">about</a>
+      <a href="#skills">skills</a>
+      <a href="#operations">activity</a>
+      <a href="#builds">projects</a>
+      <a href="writeups/">notes</a>
+      <a href="achievements/">certs</a>
+      <a href="squad/">squad <span class="nav-arrow">↗</span></a>
+      <a href="#contact">contact</a>
     </nav>
   </div>
 </header>
@@ -41,106 +44,106 @@
 <main id="main" class="wrap">
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-topline">
-      <span class="status-dot"></span> INDEPENDENT LEARNING LOG
+      <span class="status-dot"></span>
+      <span>session active · learning log est. 2026</span>
       <span class="topline-rule"></span>
-      <span>EST. 2026</span>
+      <span>root access granted</span>
     </div>
+
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">COMPUTER SCIENCE & ENGINEERING / CYBERSECURITY</p>
-        <h1 id="hero-title">Curiosity finds<br>the trail. <span class="accent">Evidence</span><br>makes the case.</h1>
-        <p class="hero-description">I’m Shadman Ibtesham — online as Jixsaw. CSE student at East West University building cybersecurity skill through CTFs, careful investigation, and projects that make me understand how systems actually work—and fail.</p>
+        <p class="eyebrow">$ whoami</p>
+        <h1 id="hero-title">Shadman Ibtesham<br><span class="accent">(Jixsaw)</span></h1>
+        <p class="hero-description">CSE student at East West University building cybersecurity skill through CTFs, careful investigation, and projects that force me to understand how systems actually work — and fail.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#operations">Explore the work <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="writeups/">Field notes <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="squad/">Deadweight Squad <span aria-hidden="true">↗</span></a>
+          <a class="button button-primary" href="#operations">./explore_work.sh</a>
+          <a class="button" href="writeups/">cat field_notes/</a>
+          <a class="button" href="squad/">cd squad/</a>
         </div>
       </div>
-      <aside class="dossier" aria-label="Profile status">
-        <div class="dossier-head">
-          <span>SUBJECT FILE</span>
-          <span class="file-code">JX-026</span>
+
+      <aside class="term-window" aria-label="Profile terminal">
+        <div class="term-titlebar">
+          <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+          <div class="term-title">recon.sh — bash</div>
         </div>
-        <div class="dossier-avatar dossier-photo">
-          <img src="IMG-20260816-WA0145(1).jpg" alt="Portrait of Shadman Ibtesham" decoding="async" fetchpriority="high">
+        <div class="term-body">
+          <div class="prompt">$ ./recon.sh --target jixsaw</div>
+          <div class="out">
+            <span class="key">target:</span> <span class="val">shadman_ibtesham</span><br>
+            <span class="key">alias:</span> <span class="val">jixsaw</span><br>
+            <span class="key">role:</span> <span class="val">cse student / cybersecurity learner</span><br>
+            <span class="key">base:</span> <span class="val">Dhaka, Bangladesh</span><br>
+            <span class="key">focus:</span> <span class="val">CTF · forensics · networking · web</span><br>
+            <span class="key">status:</span> <span class="val">learning in public</span><br>
+            <span class="key">team:</span> <span class="val">Deadweight Squad (founder)</span>
+          </div>
+          <div class="prompt">$ cat status.txt</div>
+          <div class="out">IN PROGRESS · NO SHORTCUTS. JUST REPS.</div>
         </div>
-        <p class="dossier-name">SHADMAN IBTESHAM</p>
-        <p class="dossier-role">CSE student · Cybersecurity practitioner</p>
-        <div class="dossier-divider"></div>
-        <div class="dossier-row"><span>MODE</span><strong>Student / builder</strong></div>
-        <div class="dossier-row"><span>ROLE</span><strong>Founder & Leader</strong></div>
-        <div class="dossier-row"><span>STATUS</span><strong class="status-live">Learning in public</strong></div>
-        <div class="dossier-stamp">IN PROGRESS</div>
       </aside>
-    </div>
-    <div class="hero-footer">
-      <span>NO SHORTCUTS. JUST REPS.</span>
-      <span>SCROLL TO INVESTIGATE <span aria-hidden="true">⌄</span></span>
     </div>
   </section>
 
-  <section id="profile" class="section profile-section">
-    <div class="section-label"><span>01</span> / ABOUT</div>
-    <div class="section-grid">
-      <div>
-        <h2>Learning the craft,<br><span class="muted">one problem at a time.</span></h2>
+  <section id="profile" class="section">
+    <div class="section-label">
+      <span class="cmd">$ cat</span> <span class="path">about.txt</span>
+    </div>
+    <div class="section-heading">
+      <h2>About</h2>
+      <p>Building a real foundation the only way that sticks — by solving problems and documenting what actually worked.</p>
+    </div>
+    <div class="term-window">
+      <div class="term-titlebar">
+        <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+        <div class="term-title">about.txt</div>
       </div>
-      <div class="profile-copy">
-        <p>I’m building a serious foundation in cybersecurity the only way that sticks: by solving hard problems, documenting what actually worked, and repeating the process. I’m also currently learning Python to expand my programming skills. CTFs are my main training ground — they force me to read systems, follow evidence, and stay calm when the path isn’t obvious.</p>
-        <p>This site is the public record of that work. No inflated claims. Just the practice, the projects, the team I’m building, and the notes that prove I understand what I’m doing.</p>
+      <div class="term-body">
+        <p style="margin:0 0 0.9rem;color:var(--muted)">I’m building cybersecurity skill through CTFs, deliberate practice, and projects. I’m also currently learning Python. CTFs force me to read systems, follow evidence, and stay calm when the path isn’t obvious.</p>
+        <p style="margin:0 0 0.9rem;color:var(--muted)">This site is the public record. No inflated claims — just the practice, the projects, the team, and the notes that prove I understand what I’m doing.</p>
         <div class="tag-list">
           <span>Digital forensics</span>
           <span>Networking</span>
           <span>Web security</span>
           <span>OSINT</span>
-          <span>C programming</span>
-          <span>Python · Currently learning</span>
-        </div>
-        <div class="about-squad">
-          <span class="about-squad-label">COMMUNITY LEADERSHIP</span>
-          <h3>Founder & Leader — Deadweight Squad</h3>
-          <p>I founded and lead Deadweight Squad, a CTF-focused team built on collaboration, consistent practice, and helping members level up together.</p>
-          <a href="squad/" class="text-link">About the squad <span aria-hidden="true">↗</span></a>
+          <span>C</span>
+          <span>Python · learning</span>
         </div>
       </div>
     </div>
   </section>
 
-
-  <section id="skills" class="section skills-section">
-    <div class="section-label"><span>SKILLS</span> / CURRENT TOOLKIT <span class="section-note">SKILLS &amp; CURRENT LEARNING</span></div>
+  <section id="skills" class="section">
+    <div class="section-label">
+      <span class="cmd">$ cat</span> <span class="path">skills.txt</span>
+    </div>
     <div class="section-heading">
-      <h2>Skills &amp; interests</h2>
-      <p>Strong foundations in programming and web development, with growing experience in cybersecurity.</p>
+      <h2>Skills & current learning</h2>
+      <p>Strong foundations in programming and web, with growing cybersecurity depth.</p>
     </div>
     <div class="skills-grid">
       <article class="skill-card">
-        <span class="skill-index">01 / CODE</span>
-        <span class="skill-level skill-level-strong">STRONG PROFICIENCY</span>
+        <div class="card-meta"><span class="card-index">01</span><span class="pill">STRONG</span></div>
         <h3>C Programming</h3>
-        <p>Confident with programming fundamentals, problem-solving, and building programs in C.</p>
+        <p>Confident with fundamentals, problem-solving, and building programs in C.</p>
       </article>
       <article class="skill-card">
-        <span class="skill-index">02 / WEB</span>
-        <span class="skill-level skill-level-strong">STRONG PROFICIENCY</span>
+        <div class="card-meta"><span class="card-index">02</span><span class="pill">STRONG</span></div>
         <h3>HTML</h3>
-        <p>Confident creating and structuring web pages with HTML.</p>
+        <p>Confident creating and structuring web pages.</p>
       </article>
       <article class="skill-card">
-        <span class="skill-index">03 / CRYPTO</span>
-        <span class="skill-level">CURRENTLY LEARNING</span>
+        <div class="card-meta"><span class="card-index">03</span><span class="pill pill-muted">LEARNING</span></div>
         <h3>Cryptography</h3>
         <p>Exploring ciphers, encoding, and cryptographic concepts through practice.</p>
       </article>
       <article class="skill-card">
-        <span class="skill-index">04 / HIDDEN DATA</span>
-        <span class="skill-level">CURRENTLY LEARNING</span>
+        <div class="card-meta"><span class="card-index">04</span><span class="pill pill-muted">LEARNING</span></div>
         <h3>Steganography</h3>
         <p>Investigating how information can be concealed in files and media.</p>
       </article>
       <article class="skill-card">
-        <span class="skill-index">05 / RECON</span>
-        <span class="skill-level">CURRENTLY LEARNING</span>
+        <div class="card-meta"><span class="card-index">05</span><span class="pill pill-muted">LEARNING</span></div>
         <h3>OSINT</h3>
         <p>Learning to gather and verify information from publicly available sources.</p>
       </article>
@@ -149,8 +152,7 @@
 
   <section id="operations" class="section">
     <div class="section-label">
-      <span>02</span> / EXPERIENCE
-      <span class="section-note">SELECTED ACTIVITY</span>
+      <span class="cmd">$ history</span> <span class="path">| tail -4</span>
     </div>
     <div class="section-heading">
       <h2>Field activity</h2>
@@ -158,80 +160,50 @@
     </div>
     <div class="activity-grid">
       <article class="activity-card featured">
-        <div class="card-meta">
-          <span class="card-index">LOG 001</span>
-          <span class="pill">CTF / COMPETITION</span>
-        </div>
+        <div class="card-meta"><span class="card-index">LOG 001</span><span class="pill">CTF</span></div>
         <h3>DEADFACE CTF 2026</h3>
-        <p>First major external benchmark. Competed, finished challenges under pressure, and earned the competitor certificate. Confirmed the training loop works.</p>
+        <p>First major external benchmark. Competed, finished challenges under pressure, and earned the competitor certificate.</p>
         <div class="card-bottom">
           <span>Cyber Hacktics</span>
-          <a class="card-action" href="achievements/#deadface">View credential ↗</a>
+          <a class="card-action" href="achievements/#deadface">view cert ↗</a>
         </div>
       </article>
       <article class="activity-card">
-        <div class="card-meta">
-          <span class="card-index">LOG 002</span>
-          <span class="pill pill-muted">COMMUNITY</span>
-        </div>
+        <div class="card-meta"><span class="card-index">LOG 002</span><span class="pill pill-muted">TEAM</span></div>
         <h3>Deadweight Squad</h3>
         <p>Building a team that practices together, shares approaches, and treats consistency as the real skill.</p>
         <div class="card-bottom">
-          <span>Team activity</span>
-          <a class="card-action" href="squad/">Meet the squad ↗</a>
+          <span>Founder</span>
+          <a class="card-action" href="squad/">meet squad ↗</a>
         </div>
       </article>
       <article class="activity-card">
-        <div class="card-meta">
-          <span class="card-index">LOG 003</span>
-          <span class="pill pill-muted">CAMPUS</span>
-        </div>
+        <div class="card-meta"><span class="card-index">LOG 003</span><span class="pill pill-muted">CAMPUS</span></div>
         <h3>EWU Cybersecurity Club</h3>
-        <p>Active member of the East West University cybersecurity community. Focused on hands-on learning and future competitions.</p>
+        <p>Active member of the East West University cybersecurity community. Focused on hands-on learning.</p>
         <div class="card-bottom">
-          <span>East West University</span>
-          <a class="card-action" href="achievements/#ewucsc">Event credential ↗</a>
+          <span>EWU</span>
+          <a class="card-action" href="achievements/#ewucsc">credential ↗</a>
         </div>
       </article>
       <article class="activity-card">
-        <div class="card-meta">
-          <span class="card-index">LOG 004</span>
-          <span class="pill pill-muted">PROGRAMMING</span>
-        </div>
+        <div class="card-meta"><span class="card-index">LOG 004</span><span class="pill pill-muted">LEARN</span></div>
         <h3>Python Fundamentals</h3>
-        <p>Currently learning Python to strengthen my programming foundations and build skills that will support future cybersecurity projects, automation, and CTF challenges.</p>
+        <p>Currently learning Python to strengthen programming foundations for future projects and CTF automation.</p>
         <div class="card-bottom">
-          <span>Learning in progress</span>
-          <span class="card-action">Currently learning</span>
+          <span>In progress</span>
+          <span class="card-action">currently learning</span>
         </div>
       </article>
-    </div>
-  </section>
-
-  <section id="approach" class="section approach-section">
-    <div class="section-label"><span>03</span> / HOW I WORK <span class="section-note">PROCESS OVER POSTURE</span></div>
-    <div class="approach-grid">
-      <div>
-        <p class="eyebrow">THE JIXSAW METHOD</p>
-        <h2>Observe first.<br><span class="muted">Conclude with evidence.</span></h2>
-        <p class="approach-intro">I’m still building experience, so I focus on making the reasoning visible: what I noticed, what I tested, what changed my mind, and what I learned.</p>
-        <a class="text-link" href="writeups/">Explore the field-notes archive ↗</a>
-      </div>
-      <ol class="approach-steps">
-        <li><span>01</span><div><strong>Observe</strong><p>Record the clues and define what is actually known.</p></div></li>
-        <li><span>02</span><div><strong>Test</strong><p>Try a hypothesis, inspect the result, and revise when evidence disagrees.</p></div></li>
-        <li><span>03</span><div><strong>Explain</strong><p>Document a reproducible path and be honest about tools, hints, and limitations.</p></div></li>
-      </ol>
     </div>
   </section>
 
   <section id="builds" class="section">
     <div class="section-label">
-      <span>04</span> / WORKBENCH
-      <span class="section-note">BUILDING, NOT JUST BROWSING</span>
+      <span class="cmd">$ ls</span> <span class="path">-la projects/</span>
     </div>
     <div class="section-heading">
-      <h2>Projects in progress</h2>
+      <h2>Projects</h2>
       <p>Useful systems, improved one feature at a time.</p>
     </div>
     <article class="project-row">
@@ -241,12 +213,8 @@
           <h3><a class="project-title-link" href="projects/bank-management-system/">Bank Management System ↗</a></h3>
           <span class="project-state"><i></i> IN DEVELOPMENT</span>
         </div>
-        <p>A terminal-based C project being upgraded from temporary in-memory data to persistent storage, with stronger input validation and a clearer structure. <a class="inline-link" href="projects/bank-management-system/">Read the case study ↗</a></p>
-        <div class="tag-list compact">
-          <span>C</span>
-          <span>File I/O</span>
-          <span>Data persistence</span>
-        </div>
+        <p>Terminal-based C project upgraded from in-memory data to persistent storage, with stronger validation and clearer structure.</p>
+        <div class="tag-list compact"><span>C</span><span>File I/O</span><span>Data persistence</span></div>
       </div>
       <div class="project-symbol" aria-hidden="true">↗</div>
     </article>
@@ -257,74 +225,53 @@
           <h3>Deadweight Squad</h3>
           <span class="project-state"><i></i> GROWING</span>
         </div>
-        <p>Team infrastructure and culture for consistent CTF practice. Helping members build technical foundations while improving my own leadership and teaching.</p>
-        <div class="tag-list compact">
-          <span>Leadership</span>
-          <span>CTF practice</span>
-          <span>Teamwork</span>
-        </div>
+        <p>Team infrastructure and culture for consistent CTF practice. Helping members build foundations while improving leadership and teaching.</p>
+        <div class="tag-list compact"><span>Leadership</span><span>CTF</span><span>Teamwork</span></div>
       </div>
-      <a class="project-symbol" href="squad/" aria-label="Learn about Deadweight Squad">↗</a>
+      <a class="project-symbol" href="squad/" aria-label="Deadweight Squad">↗</a>
     </article>
   </section>
 
   <section class="section">
-    <div class="section-label"><span>05</span> / NEXT OBJECTIVES</div>
+    <div class="section-label">
+      <span class="cmd">$ cat</span> <span class="path">roadmap.md</span>
+    </div>
     <div class="next-grid">
       <div>
         <h2>What comes next?</h2>
         <p class="muted">The roadmap can change. The practice won’t.</p>
       </div>
       <ol class="roadmap">
-        <li>
-          <span>01</span>
-          <div>
-            <strong>Practice with intention</strong>
-            <small>Deepen foundations across forensics, networking, web, crypto, and OSINT.</small>
-          </div>
-          <b>ACTIVE</b>
-        </li>
-        <li>
-          <span>02</span>
-          <div>
-            <strong>Write clearer explanations</strong>
-            <small>Turn every solved challenge into a reproducible, honest field note.</small>
-          </div>
-          <b>UP NEXT</b>
-        </li>
-        <li>
-          <span>03</span>
-          <div>
-            <strong>Ship more projects</strong>
-            <small>Finish the C system upgrades and enter more competitive events.</small>
-          </div>
-          <b>PLANNED</b>
-        </li>
+        <li><span>01</span><div><strong>Practice with intention</strong><small>Deepen foundations across forensics, networking, web, crypto, and OSINT.</small></div><b>ACTIVE</b></li>
+        <li><span>02</span><div><strong>Write clearer explanations</strong><small>Turn every solved challenge into a reproducible, honest field note.</small></div><b>UP NEXT</b></li>
+        <li><span>03</span><div><strong>Ship more projects</strong><small>Finish the C system upgrades and enter more competitive events.</small></div><b>PLANNED</b></li>
       </ol>
     </div>
   </section>
 
   <section id="contact" class="contact-section">
-    <div class="section-label"><span>06</span> / CONNECT</div>
+    <div class="section-label">
+      <span class="cmd">$ nc</span> <span class="path">-lvp contact</span>
+    </div>
     <div class="contact-inner">
       <div>
         <h2>Let’s connect<span class="accent">.</span></h2>
         <p>Open to cybersecurity communities, CTF collaboration, project discussions, and professional conversations.</p>
         <div class="social-links" aria-label="Social profiles">
-          <a href="https://www.facebook.com/share/18cmWcffzo/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile" title="Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7v3.2h2.8V21h3.7z"/></svg>
+          <a href="https://www.facebook.com/share/18cmWcffzo/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7v3.2h2.8V21h3.7z"/></svg>
           </a>
-          <a href="https://www.instagram.com/_jix.saw_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile" title="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.6" r="1.2"/></svg>
+          <a href="https://www.instagram.com/_jix.saw_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.6" r="1.2"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/shadman-ibtesham-665b70440/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.2 8.4a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM3.6 10h3.2v10H3.6zM9 10h3.1v1.4h.1a3.4 3.4 0 0 1 3-1.7c3.2 0 3.8 2.1 3.8 4.8V20h-3.2v-4.9c0-1.2 0-2.8-1.7-2.8s-1.9 1.3-1.9 2.7V20H9z"/></svg>
+          <a href="https://www.linkedin.com/in/shadman-ibtesham-665b70440/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.4a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM3.6 10h3.2v10H3.6zM9 10h3.1v1.4h.1a3.4 3.4 0 0 1 3-1.7c3.2 0 3.8 2.1 3.8 4.8V20h-3.2v-4.9c0-1.2 0-2.8-1.7-2.8s-1.9 1.3-1.9 2.7V20H9z"/></svg>
           </a>
-          <a href="https://github.com/jixsaw079" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.3-5.1-5.5 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.5.1-3 0 0 1-.3 3.1 1.2a10.7 10.7 0 0 1 5.7 0c2.1-1.5 3.1-1.2 3.1-1.2.6 1.5.2 2.7.1 3 .8.8 1.2 1.8 1.2 3 0 4.2-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .3.2.6.8.5A11.1 11.1 0 0 0 12 .9z"/></svg>
+          <a href="https://github.com/jixsaw079" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.3-5.1-5.5 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.5.1-3 0 0 1-.3 3.1 1.2a10.7 10.7 0 0 1 5.7 0c2.1-1.5 3.1-1.2 3.1-1.2.6 1.5.2 2.7.1 3 .8.8 1.2 1.8 1.2 3 0 4.2-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .3.2.6.8.5A11.1 11.1 0 0 0 12 .9z"/></svg>
           </a>
-          <a href="mailto:shadmanibtesham79@gmail.com" aria-label="Send email" title="Email">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.5 6 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="mailto:shadmanibtesham79@gmail.com" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.5 6 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
@@ -334,9 +281,9 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <a class="wordmark" href="/"><span class="mark">JX</span> JIXSAW</a>
-    <span>CYBERSECURITY PORTFOLIO · 2026</span>
-    <a href="#main">BACK TO TOP ↑</a>
+    <a class="wordmark" href="/"><span class="mark">JX</span> jixsaw@portfolio</a>
+    <span>exit 0 · 2026</span>
+    <a href="#main">cd ~</a>
   </div>
 </footer>
 </body>
