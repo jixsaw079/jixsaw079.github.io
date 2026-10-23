@@ -2005,7 +2005,7 @@ a:focus-visible {
 
 /* ---------- Terminal interface: shared whoami panel + status ticker ---------- */
 main.wrap::before {
-  content: "jixsaw@portfolio:~$ whoami\\A Shadman Ibtesham — CSE student & cybersecurity learner\\A jixsaw@portfolio:~$";
+  content: "jixsaw@portfolio:~$ whoami\A Shadman Ibtesham — CSE student & cybersecurity learner\A jixsaw@portfolio:~$";
   display: block;
   white-space: pre-line;
   margin: 1.1rem 0 0.75rem;
