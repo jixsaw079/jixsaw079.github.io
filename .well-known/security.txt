@@ -3,5 +3,5 @@ Contact: https://www.linkedin.com/in/shadman-ibtesham-665b70440
 Expires: 2027-10-20T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://jixsaw079.github.io/.well-known/security.txt
-Policy: https://jixsaw079.github.io/
+Policy: https://github.com/jixsaw079/jixsaw079.github.io/blob/main/SECURITY.md
 Acknowledgments: https://jixsaw079.github.io/
