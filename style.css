@@ -916,11 +916,34 @@ footer {
   color: var(--muted);
 }
 
+.squad-roster-heading {
+  margin-top: 1.8rem;
+}
+
+.squad-roster-heading h2 {
+  margin: 0.25rem 0 0.4rem;
+  font-size: 1.5rem;
+}
+
+.squad-roster-heading > p:last-child:not(.page-kicker) {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
 .squad-members {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
-  margin: 1.8rem 0;
+  margin: 1.2rem 0 1.8rem;
+}
+
+.collaborator-heading {
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.collaborator-grid {
+  max-width: 440px;
 }
 
 .squad-member {
