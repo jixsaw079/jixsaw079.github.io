@@ -1048,6 +1048,43 @@ footer {
   color: var(--dim);
 }
 
+.squad-collab-cta {
+  margin-top: 1.8rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent-soft), transparent 75%), var(--panel);
+}
+
+.squad-collab-cta h2 {
+  margin: 0.35rem 0 0.7rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.squad-collab-cta > p:not(.page-kicker):not(.collab-contact) {
+  max-width: 720px;
+  color: var(--muted);
+}
+
+.squad-collab-cta .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.45rem;
+}
+
+.collab-contact {
+  margin: 1rem 0 0;
+  color: var(--dim);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.collab-contact a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
 /* ---------- Achievements ---------- */
 .achievement-section { padding-top: 1.8rem; }
 
