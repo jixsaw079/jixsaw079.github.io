@@ -65,49 +65,54 @@
         </div>
       </div>
 
-      <aside class="term-window hero-recon" aria-label="Recon terminal">
+      <aside id="profile" class="term-window hero-about" aria-label="About">
         <div class="term-titlebar">
           <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
-          <div class="term-title">recon.sh — bash</div>
+          <div class="term-title">about.txt — bash</div>
         </div>
         <div class="term-body">
-          <div class="prompt">$ ./recon.sh --target jixsaw</div>
-          <div class="out">
-            <span class="key">target:</span> <span class="val">shadman_ibtesham</span><br>
-            <span class="key">alias:</span> <span class="val">jixsaw</span><br>
-            <span class="key">role:</span> <span class="val">cse student / cybersecurity learner</span><br>
-            <span class="key">base:</span> <span class="val">Dhaka, Bangladesh</span><br>
-            <span class="key">focus:</span> <span class="val">CTF · forensics · networking · web</span><br>
-            <span class="key">status:</span> <span class="val">learning in public</span><br>
-            <span class="key">team:</span> <span class="val">Deadweight Squad (founder)</span>
+          <h2 class="hero-about-heading">About <span class="accent">/ who I am</span></h2>
+          <p class="hero-about-copy">I’m building cybersecurity skill through CTFs, deliberate practice, and projects. I’m also currently learning Python. CTFs force me to read systems, follow evidence, and stay calm when the path isn’t obvious.</p>
+          <p class="hero-about-copy">This site is the public record. No inflated claims — just the practice, the projects, the team, and the notes that prove I understand what I’m doing.</p>
+          <div class="tag-list">
+            <span>Digital forensics</span>
+            <span>Networking</span>
+            <span>Web security</span>
+            <span>OSINT</span>
+            <span>C</span>
+            <span>Python · learning</span>
           </div>
-          <div class="prompt">$ cat status.txt</div>
-          <div class="out">IN PROGRESS · NO SHORTCUTS. JUST REPS.</div>
         </div>
       </aside>
     </div>
   </section>
 
-  <section id="profile" class="section about-section" aria-labelledby="about-title">
+  <section id="recon" class="section" aria-labelledby="recon-title">
     <div class="section-label">
-      <span class="cmd">$ cat</span> <span class="path">about.txt</span>
+      <span class="cmd">$ ./recon.sh</span> <span class="path">--target jixsaw</span>
     </div>
     <div class="section-heading">
-      <h2 id="about-title">About <span class="accent">/ who I am</span></h2>
-      <p>A little context behind the person, the practice, and this field log.</p>
+      <h2 id="recon-title">Recon profile</h2>
+      <p>A quick terminal-style snapshot of my current focus and status.</p>
     </div>
-    <div class="term-window about-panel" aria-label="About">
+    <div class="term-window" aria-label="Recon terminal">
+      <div class="term-titlebar">
+        <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+        <div class="term-title">recon.sh — bash</div>
+      </div>
       <div class="term-body">
-        <p class="hero-about-copy">I’m building cybersecurity skill through CTFs, deliberate practice, and projects. I’m also currently learning Python. CTFs force me to read systems, follow evidence, and stay calm when the path isn’t obvious.</p>
-        <p class="hero-about-copy">This site is the public record. No inflated claims — just the practice, the projects, the team, and the notes that prove I understand what I’m doing.</p>
-        <div class="tag-list">
-          <span>Digital forensics</span>
-          <span>Networking</span>
-          <span>Web security</span>
-          <span>OSINT</span>
-          <span>C</span>
-          <span>Python · learning</span>
+        <div class="prompt">$ ./recon.sh --target jixsaw</div>
+        <div class="out">
+          <span class="key">target:</span> <span class="val">shadman_ibtesham</span><br>
+          <span class="key">alias:</span> <span class="val">jixsaw</span><br>
+          <span class="key">role:</span> <span class="val">cse student / cybersecurity learner</span><br>
+          <span class="key">base:</span> <span class="val">Dhaka, Bangladesh</span><br>
+          <span class="key">focus:</span> <span class="val">CTF · forensics · networking · web</span><br>
+          <span class="key">status:</span> <span class="val">learning in public</span><br>
+          <span class="key">team:</span> <span class="val">Deadweight Squad (founder)</span>
         </div>
+        <div class="prompt">$ cat status.txt</div>
+        <div class="out">IN PROGRESS · NO SHORTCUTS. JUST REPS.</div>
       </div>
     </div>
   </section>
