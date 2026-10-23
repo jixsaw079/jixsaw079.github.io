@@ -1151,6 +1151,47 @@ footer {
   margin-top: 1.3rem;
 }
 
+
+/* ---------- Profile identity ---------- */
+.hero-identity {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+.hero-identity h1 {
+  margin: 0;
+  min-width: 0;
+}
+
+.hero-avatar {
+  display: block;
+  flex: 0 0 92px;
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--panel-2);
+  box-shadow: 0 0 0 5px var(--panel);
+}
+
+.collaborator-grid .squad-member {
+  max-width: 320px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .hero-identity { gap: 0.8rem; }
+  .hero-avatar {
+    flex-basis: 68px;
+    width: 68px;
+    height: 68px;
+  }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .hero-grid {
