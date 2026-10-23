@@ -7,7 +7,7 @@
   color-scheme: dark;
 
   /* Core palette */
-  --bg: #4b238a;
+  --bg: #0f0c16;
   --panel: #171322;
   --panel-2: #1f1a2c;
   --panel-3: #261f36;
@@ -103,7 +103,7 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 50;
   height: var(--header-h);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(75, 35, 138, 0.88);
+  background: rgba(15, 12, 22, 0.85);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
