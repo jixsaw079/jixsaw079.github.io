@@ -2003,117 +2003,113 @@ a:focus-visible {
 }
 
 
-/* ---------- Terminal interface: shared whoami panel + status ticker ---------- */
-main.wrap::before {
-  content: "jixsaw@portfolio:~$ whoami\A Shadman Ibtesham — CSE student & cybersecurity learner\A jixsaw@portfolio:~$";
-  display: block;
-  white-space: pre-line;
-  margin: 1.1rem 0 0.75rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--line-strong);
-  border-left: 3px solid var(--accent);
-  background: var(--panel);
-  color: var(--text);
-  font: 0.76rem/1.9 var(--mono);
-  letter-spacing: 0;
-  box-shadow: 4px 4px 0 rgba(142, 160, 255, 0.08);
+/* ---------- Full terminal interface redesign: preserve Jixsaw's original palette ---------- */
+:root { --radius: 2px; --header-h: auto; }
+html { scroll-padding-top: 7rem; }
+body { font-family:var(--mono); font-size:14px; line-height:1.75; letter-spacing:0; padding-bottom:148px; background:radial-gradient(ellipse at 50% 0%,rgba(142,160,255,.055),transparent 48%),var(--bg); }
+body::before { opacity:.12; background-size:28px 28px; background-image:linear-gradient(rgba(142,160,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(142,160,255,.055) 1px,transparent 1px); }
+.site-header { position:sticky; top:0; height:auto; background:rgba(15,12,22,.97); border-bottom:1px solid var(--line-strong); box-shadow:0 4px 18px rgba(0,0,0,.24); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+.header-inner { min-height:62px; height:auto; padding-block:.7rem; }
+.wordmark { font-size:.8rem; letter-spacing:.07em; }
+.mark { width:28px; height:28px; border-radius:2px; box-shadow:0 0 0 1px var(--accent); }
+nav { gap:.2rem .75rem; }
+nav a { position:relative; font:.72rem var(--mono); padding:.35rem .2rem; border-bottom:1px solid transparent; }
+nav a::before { content:"./"; color:var(--accent); opacity:0; margin-right:.12rem; }
+nav a:hover, nav a[aria-current="page"] { color:var(--accent); border-bottom-color:var(--accent); }
+nav a:hover::before, nav a[aria-current="page"]::before { opacity:1; }
+h1,h2,h3,.dossier-name { font-family:var(--mono); font-weight:500; letter-spacing:-.045em; overflow-wrap:anywhere; }
+h1 { font-size:clamp(2.2rem,5.3vw,4.4rem); line-height:1.12; }
+h2 { font-size:clamp(1.25rem,2.5vw,1.85rem); }
+h3 { font-size:1.02rem; line-height:1.5; }
+main.wrap.terminal-frame { position:relative; width:min(100% - 2rem,1100px); margin:1.5rem auto 3rem; padding:0 clamp(1rem,3vw,2rem) 2rem; border:1px solid var(--line-strong); background:rgba(23,19,34,.88); box-shadow:0 18px 55px rgba(0,0,0,.22),0 0 0 1px rgba(142,160,255,.025); }
+main.wrap.terminal-frame::before { content:"●  ●  ●     jixsaw@portfolio:~  —  terminal session"; display:block; margin:0 calc(clamp(1rem,3vw,2rem) * -1) 1.2rem; padding:.7rem 1.1rem; border-bottom:1px solid var(--line-strong); background:var(--panel-2); color:var(--muted); font:.7rem/1.5 var(--mono); letter-spacing:.02em; white-space:normal; }
+main.wrap.terminal-frame::after { content:"SESSION: ACTIVE  •  ENV: PORTFOLIO  •  USER: JIXSAW"; display:block; margin:1.6rem calc(clamp(1rem,3vw,2rem) * -1) -2rem; padding:.6rem 1.1rem; border-top:1px solid var(--line); background:rgba(31,26,44,.7); color:var(--dim); font:.62rem/1.5 var(--mono); letter-spacing:.06em; }
+.hero { padding:.5rem 0 1.2rem; }
+.hero-topline { gap:.7rem; padding:.7rem 0 1rem; border-top:1px dashed var(--line); font-size:.66rem; }
+.hero-topline::before { content:">"; color:var(--accent); }
+.status-dot { width:6px; height:6px; border-radius:0; box-shadow:0 0 9px var(--accent-glow); }
+.hero-grid { align-items:start; gap:clamp(1.5rem,4vw,3rem); padding:1rem 0 2rem; }
+.eyebrow,.page-kicker { color:var(--accent); font-size:.67rem; letter-spacing:.035em; }
+.hero-description,.profile-copy,.section-heading p,.page-intro>p:not(.page-kicker),.approach-intro { font-size:.86rem; line-height:1.9; color:var(--muted); }
+.dossier,.activity-card,.skill-card,.about-squad,.project-row,.archive-panel,.archive-note,.case-study-panel,.case-study-steps article,.note-card,.notes-manifesto article,.badge-real,.moment-placeholder,.squad-member,.squad-values article,.squad-collab-cta,.notes-policy,.achievement-card { border-radius:2px; box-shadow:none; }
+.dossier { transform:none; border-color:var(--line-strong); background:var(--panel); box-shadow:inset 0 1px 0 rgba(255,255,255,.025); }
+.dossier:hover { transform:none; box-shadow:0 0 0 1px var(--accent-soft); }
+.dossier-head,.archive-top { color:var(--accent); border-bottom:1px solid var(--line); text-transform:uppercase; }
+.dossier-head::before { content:"[ "; color:var(--dim); }
+.dossier-head::after { content:" ]"; color:var(--dim); }
+.dossier-photo,.squad-founder-photo,.member-photo,.credential-preview,.achievement-art { border-radius:2px; }
+.button { min-height:38px; border-radius:2px; font:.72rem var(--mono); letter-spacing:.015em; text-transform:uppercase; }
+.button-primary { box-shadow:3px 3px 0 rgba(142,160,255,.13); }
+.button-primary::before { content:"> "; }
+.text-link,.card-action,.inline-link { font:.76rem var(--mono); }
+.section { padding-block:1.6rem; border-top:1px dashed var(--line); }
+.section-label { padding-bottom:.65rem; border-bottom:1px dashed var(--line); color:var(--accent); font-size:.65rem; letter-spacing:.035em; }
+.section-label>span:first-child { color:var(--dim); }
+.section-heading { margin-block:1.2rem 1.3rem; }
+.section-heading h2 { margin-bottom:.45rem; }
+.section-heading p { margin-bottom:0; }
+.page-intro,.squad-hero { position:relative; padding:1.4rem 0 1.7rem; border-bottom:1px dashed var(--line); }
+.page-intro::before,.squad-hero::before { content:">"; display:block; margin-bottom:.5rem; color:var(--accent); }
+.page-kicker::before { content:""; }
+.section-grid,.approach-grid,.case-study-grid { gap:clamp(1.3rem,4vw,3rem); }
+.tag-list span,.pill,.skill-level,.member-university { border-radius:2px; font-family:var(--mono); }
+.activity-card,.skill-card,.note-card,.archive-note,.case-study-panel,.squad-member,.squad-values article,.notes-manifesto article,.badge-real,.achievement-card,.about-squad,.notes-policy { background:var(--panel); border-color:var(--line); border-radius:2px; }
+.activity-card,.skill-card,.note-card,.archive-note,.case-study-panel,.squad-member,.squad-values article,.notes-manifesto article,.achievement-card { border-left:2px solid var(--line-strong); }
+.activity-card:hover,.skill-card:hover,.note-card:hover,.archive-note:hover,.case-study-panel:hover,.squad-member:hover,.badge-real:hover { transform:translateY(-1px); border-color:var(--accent); box-shadow:none; }
+.activity-card.featured,.skill-level-strong { background:linear-gradient(135deg,var(--accent-soft),transparent 75%),var(--panel); border-color:var(--line-strong); }
+.card-index,.project-number,.skill-index,.note-index,.archive-note-index,.case-label { color:var(--accent); }
+.project-row { border-bottom:1px dashed var(--line); padding-block:1.3rem; }
+.project-row::before { content:">"; color:var(--accent); }
+input,textarea,select,button { font-family:var(--mono); }
+footer { border-top:1px solid var(--line-strong); background:rgba(15,12,22,.92); }
+.footer-inner { min-height:64px; gap:1rem; font-family:var(--mono); font-size:.65rem; }
+.footer-inner>span { color:var(--dim); }
+a { text-decoration-thickness:1px; }
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+::selection { color:var(--bg); background:var(--accent); }
+
+/* Persistent interactive terminal prompt. The idle "beep" is a visual pulse, not sound. */
+.terminal-console { position:fixed; z-index:100; left:50%; bottom:.8rem; transform:translateX(-50%); width:min(100% - 1.5rem,900px); border:1px solid var(--line-strong); background:rgba(15,12,22,.98); box-shadow:0 12px 42px rgba(0,0,0,.42),0 0 0 1px rgba(142,160,255,.05); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+.terminal-console.is-idle { animation:terminal-pulse 2.4s ease-in-out infinite; }
+@keyframes terminal-pulse { 0%,100% { border-color:var(--line-strong); box-shadow:0 12px 42px rgba(0,0,0,.42),0 0 0 1px rgba(142,160,255,.04); } 50% { border-color:var(--accent); box-shadow:0 12px 42px rgba(0,0,0,.42),0 0 12px rgba(142,160,255,.13); } }
+.terminal-console-bar { display:flex; align-items:center; gap:.7rem; min-height:32px; padding:.35rem .75rem; border-bottom:1px solid var(--line); background:var(--panel); color:var(--dim); font:.61rem/1.4 var(--mono); }
+.terminal-lights { display:inline-flex; gap:4px; flex-shrink:0; }
+.terminal-lights i { width:7px; height:7px; display:block; border:1px solid var(--line-strong); border-radius:50%; background:var(--panel-3); }
+.terminal-lights i:first-child { background:var(--accent); border-color:var(--accent); }
+.terminal-console-title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.terminal-console-status { margin-left:auto; white-space:nowrap; color:var(--accent); }
+.terminal-console-status span { display:inline-block; width:5px; height:5px; margin-right:.25rem; background:var(--accent); border-radius:50%; vertical-align:middle; box-shadow:0 0 8px var(--accent-glow); }
+.terminal-output { max-height:112px; overflow-y:auto; padding:.55rem .85rem; border-bottom:1px dashed var(--line); color:var(--muted); font:.7rem/1.6 var(--mono); white-space:pre-wrap; overflow-wrap:anywhere; }
+.terminal-output[hidden] { display:none; }
+.terminal-output-line+.terminal-output-line { margin-top:.18rem; }
+.terminal-command-echo { color:var(--text); }
+.terminal-command-echo::before { content:"› "; color:var(--accent); }
+.terminal-error { color:#d7b4ff; }
+.terminal-hint { color:var(--accent); }
+.terminal-input-row { display:flex; align-items:center; gap:.65rem; min-height:48px; padding:.4rem .75rem; }
+.terminal-prompt { flex-shrink:0; color:var(--accent); font:.72rem var(--mono); }
+.terminal-input-row input { width:100%; min-width:0; border:0; outline:0; padding:.5rem 0; color:var(--text); background:transparent; font:.75rem var(--mono); caret-color:var(--accent); }
+.terminal-input-row input::placeholder { color:var(--dim); opacity:.9; }
+.terminal-caret { width:7px; height:1rem; flex-shrink:0; background:var(--accent); animation:terminal-caret-blink 1s steps(2,start) infinite; }
+.terminal-input-row input:focus+.terminal-caret { opacity:0; }
+@keyframes terminal-caret-blink { to { visibility:hidden; } }
+.terminal-run { flex-shrink:0; width:30px; height:30px; border:1px solid var(--line-strong); background:var(--panel-2); color:var(--accent); font-size:1rem; cursor:pointer; }
+.terminal-run:hover { border-color:var(--accent); background:var(--accent-soft); }
+@media (max-width:760px) {
+  .header-inner { align-items:flex-start; flex-direction:column; gap:.55rem; }
+  .wordmark-tail { display:none; }
+  nav { width:100%; gap:.15rem .65rem; }
+  nav a { font-size:.67rem; }
+  main.wrap.terminal-frame { width:min(100% - 1rem,1100px); margin-top:.7rem; padding-inline:.85rem; }
+  main.wrap.terminal-frame::before,main.wrap.terminal-frame::after { margin-inline:-.85rem; }
+  .hero-grid { grid-template-columns:1fr; }
+  .dossier { max-width:420px; }
+  .terminal-console { width:calc(100% - .75rem); bottom:.35rem; }
+  .terminal-prompt { font-size:.64rem; }
+  .terminal-input-row { gap:.45rem; padding-inline:.55rem; }
+  .terminal-input-row input { font-size:.7rem; }
+  .terminal-console-title { max-width:44vw; }
+  .terminal-output { max-height:90px; }
+  body { padding-bottom:158px; }
 }
-
-.site-header::after,
-.error-panel::after {
-  content: "● SYSTEM ONLINE  //  BEEP BEEP  //  JIXSAW PORTFOLIO  //  CTF • DIGITAL FORENSICS • NETWORKING  //  SYSTEM ONLINE  //  BEEP BEEP  //  ";
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  padding: 0.48rem 1rem;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--accent);
-  font: 0.62rem/1.5 var(--mono);
-  letter-spacing: 0.09em;
-  white-space: nowrap;
-  text-overflow: clip;
-}
-
-.page-intro,
-.hero {
-  border-bottom: 1px solid var(--line);
-}
-
-.page-intro { position: relative; }
-
-.page-kicker::before {
-  content: "> ";
-  color: var(--accent);
-}
-
-.section-label {
-  padding-bottom: 0.65rem;
-  border-bottom: 1px dashed var(--line);
-}
-
-.activity-card,
-.skill-card,
-.note-card,
-.archive-note,
-.case-study-panel,
-.squad-member,
-.squad-values article,
-.about-squad,
-.notes-manifesto article,
-.archive-panel {
-  border-radius: 0;
-}
-
-.activity-card,
-.skill-card,
-.note-card,
-.archive-note,
-.case-study-panel,
-.squad-member,
-.squad-values article,
-.notes-manifesto article {
-  border-left: 2px solid var(--line-strong);
-}
-
-.activity-card:hover,
-.skill-card:hover,
-.note-card:hover,
-.archive-note:hover,
-.case-study-panel:hover,
-.squad-member:hover {
-  border-left-color: var(--accent);
-}
-
-.tag-list span,
-.pill,
-.skill-level,
-.member-university {
-  border-radius: 0;
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-
-@media (max-width: 640px) {
-  main.wrap::before {
-    font-size: 0.65rem;
-    overflow-wrap: anywhere;
-  }
-
-  .site-header::after,
-  .error-panel::after {
-    padding-left: 0.65rem;
-    padding-right: 0.65rem;
-    font-size: 0.57rem;
-    letter-spacing: 0.045em;
-  }
-}
+@media (prefers-reduced-motion:reduce) { .terminal-console.is-idle,.terminal-caret { animation:none; } }
