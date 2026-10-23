@@ -1684,3 +1684,320 @@ footer {
   color: var(--accent);
   background: var(--accent-soft);
 }
+
+
+/* ---------- Terminal interface redesign · original palette preserved ---------- */
+:root {
+  --radius: 2px;
+  --sans: "DM Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+body {
+  font-family: var(--mono);
+  letter-spacing: -0.015em;
+}
+
+body::before {
+  opacity: 0.11;
+  background-size: 32px 32px;
+}
+
+.site-header {
+  background: rgba(15, 12, 22, 0.96);
+  border-bottom: 1px solid var(--accent);
+  box-shadow: 0 3px 0 rgba(142, 160, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.wordmark {
+  letter-spacing: 0.04em;
+}
+
+.mark {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+nav a {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+nav a::before {
+  content: "./";
+  color: var(--dim);
+  opacity: 0;
+  margin-right: 0.2rem;
+  transition: opacity 0.15s ease;
+}
+
+nav a:hover::before,
+nav a[aria-current="page"]::before {
+  opacity: 1;
+}
+
+h1, h2, h3, .dossier-name {
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+h1 {
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.hero {
+  padding-top: 2rem;
+}
+
+.hero-topline,
+.section-label,
+.page-kicker,
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+}
+
+.hero-topline {
+  border-top: 1px solid var(--accent);
+}
+
+.hero-topline::before {
+  content: ">";
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.status-dot {
+  border-radius: 0;
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.dossier,
+.activity-card,
+.skill-card,
+.about-squad,
+.project-row,
+.archive-panel,
+.archive-note,
+.case-study-panel,
+.case-study-steps article,
+.note-card,
+.notes-manifesto article,
+.badge-real,
+.moment-placeholder,
+.squad-member,
+.squad-values article,
+.squad-collab-cta,
+.notes-policy {
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.dossier {
+  transform: none;
+  border-color: var(--accent);
+  background: var(--panel);
+  box-shadow: 4px 4px 0 rgba(142, 160, 255, 0.12);
+}
+
+.dossier:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 6px 0 rgba(142, 160, 255, 0.18);
+}
+
+.dossier-head {
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.dossier-head::before {
+  content: "[ ";
+  color: var(--dim);
+}
+
+.dossier-head::after {
+  content: " ]";
+  color: var(--dim);
+}
+
+.dossier-photo,
+.squad-founder-photo,
+.member-photo {
+  border-radius: 2px;
+}
+
+.button {
+  border-radius: 2px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  font-size: 0.76rem;
+}
+
+.button-primary {
+  box-shadow: 3px 3px 0 rgba(142, 160, 255, 0.16);
+}
+
+.button-primary::before {
+  content: "> ";
+}
+
+.text-link,
+.card-action,
+.inline-link {
+  font-family: var(--mono);
+}
+
+.section {
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.66rem;
+}
+
+.section-label > span:first-child {
+  font-weight: 500;
+}
+
+.section-heading h2,
+.profile-section h2,
+.approach-grid h2 {
+  letter-spacing: -0.06em;
+}
+
+.tag-list span,
+.pill,
+.skill-level,
+.member-university {
+  border-radius: 2px;
+  font-family: var(--mono);
+}
+
+.activity-card,
+.skill-card,
+.note-card,
+.archive-note,
+.case-study-panel,
+.notes-manifesto article,
+.badge-real,
+.moment-placeholder {
+  background: var(--panel);
+  border-color: var(--line);
+}
+
+.activity-card:hover,
+.skill-card:hover,
+.note-card:hover,
+.badge-real:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+.activity-card.featured,
+.skill-level-strong {
+  background: linear-gradient(135deg, var(--accent-soft), transparent 75%), var(--panel);
+  border-color: var(--line-strong);
+}
+
+.card-index,
+.project-number,
+.skill-index,
+.note-index,
+.archive-note-index,
+.case-label {
+  color: var(--accent);
+}
+
+.project-row {
+  position: relative;
+}
+
+.project-row::before {
+  content: ">";
+  position: absolute;
+  left: -1.05rem;
+  top: 1.75rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.project-row:hover::before {
+  opacity: 1;
+}
+
+input, textarea, select, button {
+  font-family: var(--mono);
+}
+
+footer {
+  border-top: 1px solid var(--accent);
+}
+
+.footer-inner > span {
+  color: var(--dim);
+}
+
+.squad-hero,
+.page-intro {
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-top {
+  color: var(--accent);
+  border-bottom: 1px solid var(--line);
+}
+
+.squad-panel {
+  border-color: var(--line-strong);
+  background: var(--panel);
+}
+
+.squad-member,
+.squad-values article {
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.squad-collab-cta {
+  border: 1px solid var(--accent);
+  background: linear-gradient(135deg, var(--accent-soft), transparent 70%), var(--panel);
+}
+
+.squad-footnote {
+  color: var(--dim);
+}
+
+a {
+  text-decoration-thickness: 1px;
+}
+
+a:focus-visible {
+  outline-offset: 4px;
+}
+
+::selection {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+@media (max-width: 640px) {
+  nav a::before {
+    display: none;
+  }
+
+  .hero-topline {
+    flex-wrap: wrap;
+  }
+
+  .project-row:hover::before {
+    display: none;
+  }
+}
