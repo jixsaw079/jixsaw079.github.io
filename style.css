@@ -2003,18 +2003,36 @@ a:focus-visible {
 }
 
 
-/* ---------- Terminal redesign v2: make the shell unmistakable ---------- */
+/* ---------- Terminal interface: whoami + persistent status ticker ---------- */
 main.wrap::before {
-  content: "jixsaw@portfolio:~$ ./open-profile";
+  content: "jixsaw@portfolio:~$ whoami\\A Shadman Ibtesham — CSE student & cybersecurity learner\\A jixsaw@portfolio:~$";
   display: block;
+  white-space: pre-line;
   margin: 1.1rem 0 0.5rem;
-  padding: 0.7rem 0.85rem;
+  padding: 0.85rem 1rem;
   border: 1px solid var(--line-strong);
   border-left: 3px solid var(--accent);
   background: var(--panel);
-  color: var(--muted);
-  font: 0.72rem/1.6 var(--mono);
+  color: var(--text);
+  font: 0.76rem/1.9 var(--mono);
   letter-spacing: 0;
+  box-shadow: 4px 4px 0 rgba(142, 160, 255, 0.08);
+}
+
+.site-header::after {
+  content: "● SYSTEM ONLINE  //  BEEP BEEP  //  JIXSAW PORTFOLIO  //  CTF • DIGITAL FORENSICS • NETWORKING  //  SYSTEM ONLINE  //  BEEP BEEP  //  ";
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.42rem 1rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--accent);
+  font: 0.62rem/1.5 var(--mono);
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+  text-overflow: clip;
 }
 
 .page-intro,
