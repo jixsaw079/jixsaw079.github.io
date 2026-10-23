@@ -2001,3 +2001,91 @@ a:focus-visible {
     display: none;
   }
 }
+
+
+/* ---------- Terminal redesign v2: make the shell unmistakable ---------- */
+main.wrap::before {
+  content: "jixsaw@portfolio:~$ ./open-profile";
+  display: block;
+  margin: 1.1rem 0 0.5rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  color: var(--muted);
+  font: 0.72rem/1.6 var(--mono);
+  letter-spacing: 0;
+}
+
+.page-intro,
+.hero {
+  border-bottom: 1px solid var(--line);
+}
+
+.page-intro { position: relative; }
+
+.page-kicker::before {
+  content: "> ";
+  color: var(--accent);
+}
+
+.section-label {
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+.activity-card,
+.skill-card,
+.note-card,
+.archive-note,
+.case-study-panel,
+.squad-member,
+.squad-values article,
+.about-squad,
+.notes-manifesto article,
+.archive-panel {
+  border-radius: 0;
+}
+
+.activity-card,
+.skill-card,
+.note-card,
+.archive-note,
+.case-study-panel,
+.squad-member,
+.squad-values article,
+.notes-manifesto article {
+  border-left: 2px solid var(--line-strong);
+}
+
+.activity-card:hover,
+.skill-card:hover,
+.note-card:hover,
+.archive-note:hover,
+.case-study-panel:hover,
+.squad-member:hover {
+  border-left-color: var(--accent);
+}
+
+.tag-list span,
+.pill,
+.skill-level,
+.member-university {
+  border-radius: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  main.wrap::before {
+    font-size: 0.65rem;
+    overflow-wrap: anywhere;
+  }
+}
