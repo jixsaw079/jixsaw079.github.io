@@ -65,7 +65,37 @@
         </div>
       </div>
 
-      <aside class="term-window" aria-label="Profile terminal">
+      <aside id="profile" class="term-window hero-about" aria-label="About">
+        <div class="term-titlebar">
+          <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+          <div class="term-title">about.txt</div>
+        </div>
+        <div class="term-body">
+          <p class="hero-about-heading">About <span class="accent">/ who I am</span></p>
+          <p class="hero-about-copy">I’m building cybersecurity skill through CTFs, deliberate practice, and projects. I’m also currently learning Python. CTFs force me to read systems, follow evidence, and stay calm when the path isn’t obvious.</p>
+          <p class="hero-about-copy">This site is the public record. No inflated claims — just the practice, the projects, the team, and the notes that prove I understand what I’m doing.</p>
+          <div class="tag-list">
+            <span>Digital forensics</span>
+            <span>Networking</span>
+            <span>Web security</span>
+            <span>OSINT</span>
+            <span>C</span>
+            <span>Python · learning</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="recon" class="section">
+    <div class="section-label">
+      <span class="cmd">$ ./recon.sh</span> <span class="path">--target jixsaw</span>
+    </div>
+    <div class="section-heading">
+      <h2>Recon profile</h2>
+      <p>A quick terminal-style snapshot of my current focus and status.</p>
+    </div>
+      <div class="term-window" aria-label="Profile terminal">
         <div class="term-titlebar">
           <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
           <div class="term-title">recon.sh — bash</div>
@@ -84,36 +114,7 @@
           <div class="prompt">$ cat status.txt</div>
           <div class="out">IN PROGRESS · NO SHORTCUTS. JUST REPS.</div>
         </div>
-      </aside>
-    </div>
-  </section>
-
-  <section id="profile" class="section">
-    <div class="section-label">
-      <span class="cmd">$ cat</span> <span class="path">about.txt</span>
-    </div>
-    <div class="section-heading">
-      <h2>About</h2>
-      <p>Building a real foundation the only way that sticks — by solving problems and documenting what actually worked.</p>
-    </div>
-    <div class="term-window">
-      <div class="term-titlebar">
-        <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
-        <div class="term-title">about.txt</div>
       </div>
-      <div class="term-body">
-        <p style="margin:0 0 0.9rem;color:var(--muted)">I’m building cybersecurity skill through CTFs, deliberate practice, and projects. I’m also currently learning Python. CTFs force me to read systems, follow evidence, and stay calm when the path isn’t obvious.</p>
-        <p style="margin:0 0 0.9rem;color:var(--muted)">This site is the public record. No inflated claims — just the practice, the projects, the team, and the notes that prove I understand what I’m doing.</p>
-        <div class="tag-list">
-          <span>Digital forensics</span>
-          <span>Networking</span>
-          <span>Web security</span>
-          <span>OSINT</span>
-          <span>C</span>
-          <span>Python · learning</span>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section id="skills" class="section">
