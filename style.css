@@ -1590,3 +1590,21 @@ footer {
 @media (max-width: 520px) {
   .skills-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Skill proficiency labels */
+.skill-level {
+  display: inline-block;
+  margin-top: 0.65rem;
+  padding: 0.22rem 0.38rem;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  font: 0.56rem var(--mono);
+  letter-spacing: 0.045em;
+  border-radius: 3px;
+}
+.skill-level-strong {
+  border-color: rgba(142, 160, 255, 0.55);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
