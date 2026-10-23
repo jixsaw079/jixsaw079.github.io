@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f0c16">
+<meta name="theme-color" content="#0b0912">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; media-src 'none'; worker-src 'none'; connect-src 'none'; manifest-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Deadweight Squad — CTF & Cybersecurity Team</title>
+<title>jixsaw@squad:~$ — Deadweight Squad</title>
 <meta name="description" content="Deadweight Squad is a CTF and cybersecurity team founded by Shadman Ibtesham (Jixsaw). Built on practice, collaboration, and integrity.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Deadweight Squad">
@@ -16,21 +16,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=20261023-terminal-v6">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="wordmark" href="/" aria-label="Shadman Ibtesham home"><span class="mark">SI</span> SHADMAN IBTESHAM <span class="wordmark-tail">CYBERSECURITY</span></a>
+    <a class="wordmark" href="/" aria-label="Jixsaw home">
+      <span class="mark">JX</span>
+      <span class="prompt-user">jixsaw</span><span class="prompt-host">@squad</span><span class="wordmark-tail">:~$</span>
+    </a>
     <nav aria-label="Main navigation">
-      <a href="/#profile">About</a>
-      <a href="/#operations">Activity</a>
-      <a href="/#builds">Projects</a>
-      <a href="/writeups/">Field Notes</a>
-      <a href="/achievements/">Achievements</a>
-      <a href="/squad/" aria-current="page">Deadweight Squad</a>
-      <a href="/#contact">Connect</a>
+      <a href="/#profile">about</a>
+      <a href="/#operations">activity</a>
+      <a href="/#builds">projects</a>
+      <a href="/writeups/">notes</a>
+      <a href="/achievements/">certs</a>
+      <a href="/squad/" aria-current="page">squad</a>
+      <a href="/#contact">contact</a>
     </nav>
   </div>
 </header>
@@ -38,7 +41,7 @@
 <main id="main" class="wrap">
   <section class="page-intro squad-hero">
     <div class="squad-hero-copy">
-      <p class="page-kicker">TEAM PROFILE / DWS-001</p>
+      <p class="page-kicker">$ cat team_profile.txt</p>
       <h1>Deadweight<br><span class="accent">Squad.</span></h1>
       <p>A CTF team built on curiosity, persistence, and the belief that you get better faster when you solve hard problems together.</p>
     </div>
@@ -47,7 +50,7 @@
     </div>
   </section>
 
-  <section class="archive-panel squad-panel">
+  <section class="archive-panel">
     <div class="archive-top">
       <span>TEAM DOSSIER / DEADWEIGHT SQUAD</span>
       <span>FOUNDED 2026</span>
@@ -64,14 +67,13 @@
       </div>
     </div>
 
-    <div class="squad-roster-heading">
-      <p class="page-kicker">OFFICIAL ROSTER</p>
-      <h2>Squad members</h2>
+    <div class="section-label" style="margin-top:1.6rem">
+      <span class="cmd">$ ls</span> <span class="path">roster/</span>
     </div>
     <div class="squad-members">
       <article class="squad-member">
         <div class="member-photo">
-          <img src="Messenger_creation_91AC72D5-1202-4F56-AEC5-0BF03E2A2BE8.png" alt="Elham Ahmed (Ryozu), co-founder of Deadweight Squad" loading="lazy" decoding="async">
+          <img src="Messenger_creation_91AC72D5-1202-4F56-AEC5-0BF03E2A2BE8.png" alt="Elham Ahmed (Ryozu)" loading="lazy" decoding="async">
         </div>
         <p class="page-kicker">CO-FOUNDER</p>
         <h3>Elham Ahmed <span class="muted">(Ryozu)</span></h3>
@@ -89,20 +91,18 @@
       </article>
     </div>
 
-    <div class="squad-roster-heading collaborator-heading">
-      <p class="page-kicker">EXTERNAL COLLABORATION</p>
-      <h2>Collaborators</h2>
-      <p>People we work with beyond the official squad roster.</p>
+    <div class="section-label" style="margin-top:1.4rem">
+      <span class="cmd">$ ls</span> <span class="path">collaborators/</span>
     </div>
-    <div class="squad-members collaborator-grid">
+    <div class="squad-members" style="max-width:320px">
       <article class="squad-member">
         <div class="member-photo">
-          <img src="FB_IMG_1792483337644.jpg" alt="Sowvik Chowdhury, collaborator from CodeX Cartel" loading="lazy" decoding="async">
+          <img src="FB_IMG_1792483337644.jpg" alt="Sowvik Chowdhury" loading="lazy" decoding="async">
         </div>
         <p class="page-kicker">COLLABORATOR · CODEX CARTEL</p>
         <h3>Sowvik Chowdhury</h3>
         <p>Collaborating with Deadweight Squad on shared work and CTF practice.</p>
-        <span class="member-university">External collaborator · Not an official squad member</span>
+        <span class="member-university">External collaborator</span>
       </article>
     </div>
 
@@ -124,24 +124,29 @@
       </article>
     </div>
 
-    <section class="squad-collab-cta" aria-labelledby="collab-title">
-      <p class="page-kicker">OPEN INVITATION / CTF COLLABORATION</p>
-      <h2 id="collab-title">Want to compete together?</h2>
-      <p>Deadweight Squad is open to collaborating with CTF players and teams. If you’d like to participate in a CTF with us, share ideas, or team up for a competition, get in touch. We’re happy to connect with people who enjoy learning and solving challenges together.</p>
-      <a class="button button-primary" href="mailto:shadmanibtesham79@gmail.com?subject=CTF%20Collaboration%20with%20Deadweight%20Squad">Email to collaborate <span aria-hidden="true">↗</span></a>
-    </section>
+    <div class="term-window" style="margin-top:1.6rem">
+      <div class="term-titlebar">
+        <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+        <div class="term-title">collab.sh</div>
+      </div>
+      <div class="term-body">
+        <div class="prompt">$ cat invitation.txt</div>
+        <div class="out">Deadweight Squad is open to collaborating with CTF players and teams. If you’d like to participate in a CTF with us, share ideas, or team up for a competition, get in touch.</div>
+        <a class="button button-primary" href="mailto:shadmanibtesham79@gmail.com?subject=CTF%20Collaboration%20with%20Deadweight%20Squad">email to collaborate</a>
+      </div>
+    </div>
 
     <div class="squad-footnote">TEAM DETAILS AND ACHIEVEMENTS WILL BE ADDED AS THEY ARE CONFIRMED.</div>
   </section>
 
-  <a class="back-link" href="/">← BACK TO PORTFOLIO</a>
+  <a class="back-link" href="/">$ cd ~</a>
 </main>
 
 <footer>
   <div class="wrap footer-inner">
-    <a class="wordmark" href="/"><span class="mark">SI</span> SHADMAN IBTESHAM</a>
-    <span>CYBERSECURITY PORTFOLIO · 2026</span>
-    <a href="#main">BACK TO TOP ↑</a>
+    <a class="wordmark" href="/"><span class="mark">JX</span> jixsaw@squad</a>
+    <span>exit 0 · 2026</span>
+    <a href="#main">cd ~</a>
   </div>
 </footer>
 </body>
