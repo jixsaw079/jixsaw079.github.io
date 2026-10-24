@@ -188,4 +188,32 @@ footer{border-top:1px solid var(--line)}
 ::selection{background:rgba(142,160,255,.35);color:var(--text)}
 @media(max-width:860px){.hero-grid,.next-grid,.squad-feature,.notes-manifesto{grid-template-columns:1fr}}
 @media(max-width:640px){.wrap{width:min(100% - 1.5rem,1080px)}.header-inner{flex-direction:column;align-items:flex-start;height:auto;padding:.65rem 0;gap:.5rem}.site-header{height:auto}nav{width:100%;gap:.3rem .9rem;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}nav a{font-size:.74rem;flex:0 0 auto}h1{font-size:clamp(2rem,10vw,2.8rem)}.section{padding:3rem 0}.project-row{grid-template-columns:1fr 28px;gap:.65rem}.project-number{grid-column:1/-1;padding-top:0}.roadmap li{grid-template-columns:24px 1fr}.roadmap li>b{grid-column:2}.footer-inner{flex-direction:column;align-items:flex-start;padding:1.2rem 0;gap:.5rem}.hero-avatar{flex-basis:64px;width:64px;height:64px}.collaborator-grid{grid-template-columns:minmax(0,1fr)}.activity-grid,.skills-grid,.achievement-grid,.notes-board{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.status-dot{animation:none}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* root access granted + blinking block cursor */
+.access-granted{
+  font-family:var(--mono, "DM Mono", ui-monospace, monospace);
+  font-size:.82rem;
+  font-weight:500;
+  color:var(--accent, #8ea0ff);
+  letter-spacing:.03em;
+  margin:1.35rem 0 .35rem;
+  display:flex;
+  align-items:center;
+  line-height:1.2;
+}
+.access-granted .cursor{
+  display:inline-block;
+  width:.52em;
+  height:1.05em;
+  margin-left:.12em;
+  background:var(--accent, #8ea0ff);
+  border-radius:1px;
+  flex-shrink:0;
+  animation:blink-cursor 1.05s step-end infinite;
+}
+@keyframes blink-cursor{
+  0%,100%{opacity:1}
+  50%{opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.status-dot{animation:none}.access-granted .cursor{animation:none;opacity:1}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
