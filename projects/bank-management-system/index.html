@@ -44,12 +44,13 @@
   <section class="page-intro">
     <p class="page-kicker">$ cat projects/bank-management-system/README.md</p>
     <h1>Bank Management<br><span class="accent">System.</span></h1>
-    <p>A menu-driven Bank Management System built in C as a university learning project. It stays in one <code>.c</code> source file and uses standard file handling to save account records between runs.</p>
-    <div class="tag-list compact"><span>C</span><span>Structures &amp; functions</span><span>File I/O</span><span>Input validation</span><span>Persistent storage</span></div>
+    <p>A menu-driven Bank Management System built in C as a university learning project. The implementation stays in one <code>.c</code> source file, saves account records between runs, and keeps timestamped transaction history in a separate text file.</p>
+    <div class="tag-list compact"><span>C</span><span>Structures &amp; functions</span><span>File I/O</span><span>Input validation</span><span>Persistent storage</span><span>Transaction history</span></div>
     <div class="hero-actions">
       <a class="button button-primary" href="https://github.com/jixsaw079/Bank-Management-System" target="_blank" rel="noopener noreferrer">view repository ↗</a>
       <a class="button" href="https://github.com/jixsaw079/Bank-Management-System/blob/main/README.md" target="_blank" rel="noopener noreferrer">read README ↗</a>
       <a class="button" href="https://github.com/jixsaw079/Bank-Management-System/blob/main/Bank-Management-System.c" target="_blank" rel="noopener noreferrer">read C source ↗</a>
+      <a class="button" href="https://github.com/jixsaw079/Bank-Management-System/blob/main/docs/TESTING.md" target="_blank" rel="noopener noreferrer">view manual QA ↗</a>
     </div>
   </section>
 
@@ -71,13 +72,15 @@
           • Transfer funds between different accounts<br>
           • Record loans and repay outstanding amounts<br>
           • Reject invalid numeric input and unknown account numbers<br>
-          • Save records to <code>accounts.txt</code> and reload them at startup<br><br>
+          • Save records to <code>accounts.txt</code> and reload them at startup<br>
+          • Record timestamped deposits, withdrawals, transfers, loans, and repayments in <code>transactions.txt</code><br>
+          • View transaction history for a specific account, including amounts and resulting balances<br><br>
           <em class="dim-text">Educational simulation — not real banking software.</em>
         </div>
         <div class="prompt">$ cat implementation_notes.txt</div>
         <div class="out">
           • Storage uses a text file in the program's current working directory.<br>
-          • Keep <code>accounts.txt</code> in that working directory between runs.<br>
+          • Keep <code>accounts.txt</code> and <code>transactions.txt</code> in the program's working directory between runs.<br>
           • Account names should not contain the <code>|</code> separator used by the file format.<br>
           • The project supports up to 100 accounts and uses <code>float</code> for money values.<br>
           • Loan approval is simulated; no real bank or database is connected.
@@ -103,6 +106,7 @@
 6. Transfer Money
 7. Apply For Loan
 8. Repay Loan
+9. View Transaction History
 0. Exit
 Enter choice: 0
 Thank you for using the Bank Management System.</code></pre>
@@ -117,9 +121,16 @@ Thank you for using the Bank Management System.</code></pre>
       <div class="term-titlebar"><div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div><div class="term-title">Bank-Management-System.c</div></div>
       <div class="term-body">
         <details class="source-details">
-          <summary>Expand full source code (588 lines)</summary>
+          <summary>Expand full source code (884 lines)</summary>
           <pre class="source-code"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;errno.h&gt;
 #include &lt;math.h&gt;
+#include &lt;float.h&gt;
+#include &lt;limits.h&gt;
+#include &lt;time.h&gt;
 
 #define MAX_ACCOUNTS 100
 
@@ -135,10 +146,12 @@ struct Account accounts[MAX_ACCOUNTS];
 int accountCount = 0;
 int nextAccountNumber = 1001;
 #define DATA_FILE "accounts.txt"
+#define TRANSACTION_FILE "transactions.txt"
 
 void clearInputBuffer(void);
 int readInt(const char prompt[], int *value);
 int readFloat(const char prompt[], float *value);
+int canAddAmount(float current, float amount);
 int readName(char name[]);
 void createAccount(void);
 void viewAccounts(void);
@@ -150,6 +163,8 @@ void applyLoan(void);
 void repayLoan(void);
 int loadAccounts(void);
 int saveAccounts(void);
+int recordTransaction(int accountNumber, const char type[], float amount, float balance);
+void viewTransactionHistory(void);
 
 int main(void)
 {
@@ -171,6 +186,7 @@ int main(void)
         printf("6. Transfer Money\n");
         printf("7. Apply For Loan\n");
         printf("8. Repay Loan\n");
+        printf("9. View Transaction History\n");
         printf("0. Exit\n");
 
         if (!readInt("Enter choice: ", &amp;choice))
@@ -195,6 +211,8 @@ int main(void)
             applyLoan();
         else if (choice == 8)
             repayLoan();
+        else if (choice == 9)
+            viewTransactionHistory();
         else if (choice == 0)
         {
             if (!saveAccounts())
@@ -241,7 +259,12 @@ int loadAccounts(void)
         }
 
         if (accounts[accountCount].accountNumber &gt;= nextAccountNumber)
-            nextAccountNumber = accounts[accountCount].accountNumber + 1;
+        {
+            if (accounts[accountCount].accountNumber &gt;= INT_MAX - 1)
+                nextAccountNumber = INT_MAX;
+            else
+                nextAccountNumber = accounts[accountCount].accountNumber + 1;
+        }
 
         accountCount++;
         loaded = 1;
@@ -288,6 +311,118 @@ int saveAccounts(void)
     return 1;
 }
 
+/* Append one successful balance-changing operation to the transaction log. */
+int recordTransaction(int accountNumber, const char type[], float amount, float balance)
+{
+    FILE *file;
+    time_t now;
+    struct tm *localTime;
+    char timestamp[20];
+
+    now = time(NULL);
+    localTime = localtime(&amp;now);
+
+    if (localTime == NULL ||
+        strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localTime) == 0)
+    {
+        printf("Error: could not create a transaction timestamp.\n");
+        return 0;
+    }
+
+    file = fopen(TRANSACTION_FILE, "a");
+    if (file == NULL)
+    {
+        printf("Error: could not open %s for writing.\n", TRANSACTION_FILE);
+        return 0;
+    }
+
+    if (fprintf(file, "%d|%s|%.2f|%.2f|%s\n",
+                accountNumber, type, amount, balance, timestamp) &lt; 0)
+    {
+        fclose(file);
+        printf("Error: failed while writing transaction history.\n");
+        return 0;
+    }
+
+    if (fclose(file) != 0)
+    {
+        printf("Error: could not finish saving transaction history.\n");
+        return 0;
+    }
+
+    return 1;
+}
+
+/* Show all saved transactions for an account number. */
+void viewTransactionHistory(void)
+{
+    FILE *file;
+    int accountNumber;
+    int savedAccountNumber;
+    int foundAccount = 0;
+    int foundTransaction = 0;
+    float amount;
+    float balance;
+    char type[32];
+    char timestamp[64];
+    int i;
+
+    if (!readInt("Enter account number: ", &amp;accountNumber))
+    {
+        printf("Invalid account number.\n");
+        return;
+    }
+
+    for (i = 0; i &lt; accountCount; i++)
+    {
+        if (accounts[i].accountNumber == accountNumber)
+        {
+            foundAccount = 1;
+            break;
+        }
+    }
+
+    if (!foundAccount)
+    {
+        printf("Account not found.\n");
+        return;
+    }
+
+    file = fopen(TRANSACTION_FILE, "r");
+    if (file == NULL)
+    {
+        printf("No transaction history found for this account yet.\n");
+        return;
+    }
+
+    printf("\n========== TRANSACTION HISTORY ==========\n");
+    printf("Account: %d\n", accountNumber);
+    printf("%-20s %-18s %-12s %s\n",
+           "Date / Time", "Transaction", "Amount", "Balance After");
+    printf("--------------------------------------------------------------------------\n");
+
+    while (fscanf(file, "%d|%31[^|]|%f|%f|%63[^\n]\n",
+                  &amp;savedAccountNumber, type, &amp;amount, &amp;balance, timestamp) == 5)
+    {
+        if (savedAccountNumber == accountNumber)
+        {
+            printf("%-20s %-18s %10.2f %16.2f\n",
+                   timestamp, type, amount, balance);
+            foundTransaction = 1;
+        }
+    }
+
+    if (ferror(file))
+        printf("Warning: an error occurred while reading transaction history.\n");
+
+    fclose(file);
+
+    if (!foundTransaction)
+        printf("No transactions recorded for this account yet.\n");
+
+    printf("==========================================\n");
+}
+
 /* Remove any extra characters left on the current input line. */
 void clearInputBuffer(void)
 {
@@ -299,50 +434,174 @@ void clearInputBuffer(void)
     }
 }
 
-/* Read an integer safely. */
+/* Read an integer safely, rejecting malformed and out-of-range input. */
 int readInt(const char prompt[], int *value)
 {
+    char input[100];
+    char *end;
+    long number;
+    int character;
+
     printf("%s", prompt);
 
-    if (scanf("%d", value) != 1)
-    {
-        clearInputBuffer();
+    if (fgets(input, sizeof(input), stdin) == NULL)
         return 0;
+
+    if (strchr(input, '\n') == NULL)
+    {
+        character = getchar();
+        if (character != '\n' &amp;&amp; character != EOF)
+        {
+            while (character != '\n' &amp;&amp; character != EOF)
+                character = getchar();
+            return 0;
+        }
     }
 
-    clearInputBuffer();
+    errno = 0;
+    number = strtol(input, &amp;end, 10);
+
+    if (end == input)
+        return 0;
+
+    while (isspace((unsigned char)*end))
+        end++;
+
+    if (*end != '\0' || errno == ERANGE || number &lt; INT_MIN || number &gt; INT_MAX)
+        return 0;
+
+    *value = (int)number;
     return 1;
 }
 
-/* Read a number and reject invalid values such as text or infinity. */
+/* Read a complete line and reject malformed or out-of-range numbers. */
 int readFloat(const char prompt[], float *value)
 {
+    char input[100];
+    char *end;
+    float number;
+    int character;
+
     printf("%s", prompt);
 
-    if (scanf("%f", value) != 1 || !isfinite(*value))
-    {
-        clearInputBuffer();
+    if (fgets(input, sizeof(input), stdin) == NULL)
         return 0;
+
+    /* Reject input lines that are longer than the buffer. */
+    if (strchr(input, '\n') == NULL)
+    {
+        character = getchar();
+
+        if (character != '\n' &amp;&amp; character != EOF)
+        {
+            while (character != '\n' &amp;&amp; character != EOF)
+                character = getchar();
+
+            return 0;
+        }
     }
 
-    clearInputBuffer();
+    errno = 0;
+    number = strtof(input, &amp;end);
+
+    /* Reject input that contains no number. */
+    if (end == input)
+        return 0;
+
+    /* Allow trailing whitespace, but reject any other extra characters. */
+    while (isspace((unsigned char)*end))
+        end++;
+
+    if (*end != '\0')
+        return 0;
+
+    /* Reject overflow, underflow, infinity, and NaN. */
+    if (errno == ERANGE || !isfinite(number))
+        return 0;
+
+    *value = number;
     return 1;
 }
 
-/* Read a name that may contain spaces, with room for the null character. */
+/* Read and validate a name; reject numeric-only and unsupported input. */
 int readName(char name[])
 {
+    char input[100];
+    size_t length;
+    size_t start = 0;
+    size_t end;
+    size_t i;
+    int hasLetter = 0;
+    int character;
+
     printf("Enter name: ");
 
-    if (scanf(" %49[^\n]", name) != 1)
+    if (fgets(input, sizeof(input), stdin) == NULL)
+        return 0;
+
+    if (strchr(input, '\n') == NULL)
     {
-        clearInputBuffer();
-        printf("Invalid name. Please try again.\n");
+        character = getchar();
+        if (character != '\n' &amp;&amp; character != EOF)
+        {
+            while (character != '\n' &amp;&amp; character != EOF)
+                character = getchar();
+
+            printf("Name is too long. Please enter a shorter name.\n");
+            return 0;
+        }
+    }
+
+    length = strlen(input);
+
+    while (start &lt; length &amp;&amp; isspace((unsigned char)input[start]))
+        start++;
+
+    end = length;
+    while (end &gt; start &amp;&amp; isspace((unsigned char)input[end - 1]))
+        end--;
+
+    if (start == end || end - start &gt;= sizeof(((struct Account *)0)-&gt;name))
+    {
+        printf("Invalid name. Enter a name containing letters.\n");
         return 0;
     }
 
-    clearInputBuffer();
+    for (i = start; i &lt; end; i++)
+    {
+        unsigned char ch = (unsigned char)input[i];
+
+        if (isalpha(ch) || ch &gt;= 128)
+        {
+            hasLetter = 1;
+        }
+        else if (isspace(ch) || ch == '-' || ch == '\'' || ch == '.')
+        {
+            /* Allow spaces and common punctuation used in names. */
+        }
+        else
+        {
+            printf("Invalid name. Use letters, spaces, hyphens, apostrophes, or periods.\n");
+            return 0;
+        }
+    }
+
+    if (!hasLetter)
+    {
+        printf("Invalid name. A name cannot contain only numbers or punctuation.\n");
+        return 0;
+    }
+
+    memcpy(name, input + start, end - start);
+    name[end - start] = '\0';
     return 1;
+}
+
+/* Check whether adding a positive amount stays within the finite float range. */
+int canAddAmount(float current, float amount)
+{
+    return isfinite(current) &amp;&amp; isfinite(amount) &amp;&amp; current &gt;= 0.0f &amp;&amp;
+           amount &gt; 0.0f &amp;&amp; amount &lt;= FLT_MAX - current;
 }
 
 void createAccount(void)
@@ -352,6 +611,12 @@ void createAccount(void)
     if (accountCount &gt;= MAX_ACCOUNTS)
     {
         printf("Account limit reached. No more accounts can be created.\n");
+        return;
+    }
+
+    if (nextAccountNumber &lt;= 0 || nextAccountNumber == INT_MAX)
+    {
+        printf("Cannot create another account because the account number range has been reached.\n");
         return;
     }
 
@@ -378,6 +643,10 @@ void createAccount(void)
     printf("Account number: %d\n", accounts[accountCount].accountNumber);
 
     accountCount++;
+    if (initialDeposit &gt; 0 &amp;&amp;
+        !recordTransaction(accounts[accountCount - 1].accountNumber, "INITIAL_DEPOSIT",
+                           initialDeposit, accounts[accountCount - 1].balance))
+        printf("Warning: the initial deposit was not added to transaction history.\n");
     if (!saveAccounts())
         printf("Warning: this change is not safely saved to disk.\n");
 }
@@ -429,9 +698,17 @@ void depositMoney(void)
                 return;
             }
 
+            if (!canAddAmount(accounts[i].balance, amount))
+            {
+                printf("Deposit would exceed the supported balance range.\n");
+                return;
+            }
+
             accounts[i].balance += amount;
             printf("Deposit successful!\n");
             printf("New balance: %.2f\n", accounts[i].balance);
+            if (!recordTransaction(accounts[i].accountNumber, "DEPOSIT", amount, accounts[i].balance))
+                printf("Warning: deposit history could not be saved.\n");
             if (!saveAccounts())
                 printf("Warning: this change is not safely saved to disk.\n");
             return;
@@ -478,6 +755,8 @@ void withdrawMoney(void)
             accounts[i].balance -= amount;
             printf("Withdrawal successful!\n");
             printf("Remaining balance: %.2f\n", accounts[i].balance);
+            if (!recordTransaction(accounts[i].accountNumber, "WITHDRAWAL", amount, accounts[i].balance))
+                printf("Warning: withdrawal history could not be saved.\n");
             if (!saveAccounts())
                 printf("Warning: this change is not safely saved to disk.\n");
             return;
@@ -590,12 +869,22 @@ void transferMoney(void)
         return;
     }
 
+    if (!canAddAmount(accounts[receiverIndex].balance, amount))
+    {
+        printf("Transfer would exceed the receiver's supported balance range.\n");
+        return;
+    }
+
     accounts[senderIndex].balance -= amount;
     accounts[receiverIndex].balance += amount;
 
     printf("Transfer successful!\n");
     printf("Sender's remaining balance: %.2f\n", accounts[senderIndex].balance);
     printf("Receiver's new balance: %.2f\n", accounts[receiverIndex].balance);
+    if (!recordTransaction(accounts[senderIndex].accountNumber, "TRANSFER_OUT", amount, accounts[senderIndex].balance))
+        printf("Warning: sender transfer history could not be saved.\n");
+    if (!recordTransaction(accounts[receiverIndex].accountNumber, "TRANSFER_IN", amount, accounts[receiverIndex].balance))
+        printf("Warning: receiver transfer history could not be saved.\n");
     if (!saveAccounts())
         printf("Warning: this change is not safely saved to disk.\n");
 }
@@ -628,12 +917,21 @@ void applyLoan(void)
                 return;
             }
 
+            if (!canAddAmount(accounts[i].loan, amount) ||
+                !canAddAmount(accounts[i].balance, amount))
+            {
+                printf("Loan would exceed the supported numeric range.\n");
+                return;
+            }
+
             accounts[i].loan += amount;
             accounts[i].balance += amount;
 
             printf("Loan recorded successfully for this educational simulation.\n");
             printf("Outstanding loan: %.2f\n", accounts[i].loan);
             printf("Available balance: %.2f\n", accounts[i].balance);
+            if (!recordTransaction(accounts[i].accountNumber, "LOAN", amount, accounts[i].balance))
+                printf("Warning: loan history could not be saved.\n");
             if (!saveAccounts())
                 printf("Warning: this change is not safely saved to disk.\n");
             return;
@@ -681,8 +979,8 @@ void repayLoan(void)
 
             if (amount &gt; accounts[i].loan)
             {
-                amount = accounts[i].loan;
-                printf("Repayment adjusted to the outstanding loan amount.\n");
+                printf("Repayment cannot exceed the outstanding loan.\n");
+                return;
             }
 
             if (amount &gt; accounts[i].balance)
@@ -697,6 +995,8 @@ void repayLoan(void)
             printf("Loan repayment successful!\n");
             printf("Remaining loan: %.2f\n", accounts[i].loan);
             printf("Remaining balance: %.2f\n", accounts[i].balance);
+            if (!recordTransaction(accounts[i].accountNumber, "LOAN_REPAYMENT", amount, accounts[i].balance))
+                printf("Warning: loan repayment history could not be saved.\n");
             if (!saveAccounts())
                 printf("Warning: this change is not safely saved to disk.\n");
             return;
@@ -713,28 +1013,30 @@ void repayLoan(void)
   </section>
 
   <section class="section">
-    <div class="section-label"><span class="cmd">$ cat</span> <span class="path">engineering_notes.md</span></div>
+    <div class="section-label"><span class="cmd">$ cat</span> <span class="path">project_status.txt</span></div>
     <div class="section-heading">
-      <h2>How I’ll document the changes</h2>
+      <h2>Project status &amp; verification</h2>
+      <p>The core feature set is complete for this learning-project scope. Manual QA results are documented in the repository.</p>
     </div>
     <div class="notes-board">
       <article class="note-card">
         <div class="note-card-top"><span class="note-index">01</span></div>
-        <h2>Record the baseline</h2>
-        <p>Describe existing behavior before changing the code, so regressions are easier to spot.</p>
+        <h2>Account persistence</h2>
+        <p>Account records and balances were checked after restarting the program to confirm they persist between runs.</p>
       </article>
       <article class="note-card">
         <div class="note-card-top"><span class="note-index">02</span></div>
-        <h2>Change one thing at a time</h2>
-        <p>Keep each improvement small enough to explain during a code review or viva.</p>
+        <h2>Transaction validation</h2>
+        <p>Manual checks covered valid deposits and withdrawals, insufficient balance, invalid amounts, transfers, and non-numeric input.</p>
       </article>
       <article class="note-card">
         <div class="note-card-top"><span class="note-index">03</span></div>
-        <h2>Verify the result</h2>
-        <p>Document what was tested and what remains incomplete. No test result is claimed until it has been run.</p>
+        <h2>History &amp; documentation</h2>
+        <p>Transaction history was checked across restarts. The README and QA notes describe features, build steps, known limitations, and the tests performed.</p>
       </article>
     </div>
-    <p class="status-note">Status: published on GitHub. The source is available for review; compilation and runtime tests have not been independently verified here. This is a learning project, not production banking software.</p>
+    <p class="status-note">Educational project only — not production banking software. Data is stored in local plain-text files; use fictional details and keep backups while testing.</p>
+    <p class="project-links"><a class="card-action" href="https://github.com/jixsaw079/Bank-Management-System/blob/main/README.md" target="_blank" rel="noopener noreferrer">read project README ↗</a> <span aria-hidden="true">·</span> <a class="card-action" href="https://github.com/jixsaw079/Bank-Management-System/blob/main/docs/TESTING.md" target="_blank" rel="noopener noreferrer">read full manual QA log ↗</a></p>
   </section>
 
   <a class="back-link" href="/projects/">$ cd ../projects/</a>
